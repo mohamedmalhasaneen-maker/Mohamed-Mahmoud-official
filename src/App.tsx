@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import { PROFILE_DATA, PROJECTS } from './data/projects';
 import { ProfileHeader } from './components/ProfileHeader';
 import { ProjectCard } from './components/ProjectCard';
-import { StandaloneExportModal } from './components/StandaloneExportModal';
-import { Code2, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function App() {
-  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
-
   return (
     <div className="relative min-h-screen w-full bg-[#080d1a] text-slate-100 flex flex-col items-center justify-start py-8 sm:py-12 px-4 selection:bg-sky-500/30 selection:text-sky-200 overflow-x-hidden font-sans">
       
@@ -50,19 +46,6 @@ export default function App() {
           ))}
         </section>
 
-        {/* Standalone HTML trigger button */}
-        <div className="mt-8 w-full flex justify-center">
-          <button
-            type="button"
-            id="open-standalone-modal-btn"
-            onClick={() => setIsExportModalOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-sky-500/20 hover:border-sky-400/40 text-sky-300 hover:text-sky-200 text-xs font-medium transition-all shadow-md backdrop-blur-md cursor-pointer"
-          >
-            <Code2 className="w-4 h-4 text-sky-400" />
-            <span>عرض ونسخ كود HTML المستقل (Single File)</span>
-          </button>
-        </div>
-
         {/* Footer */}
         <footer className="mt-10 sm:mt-12 text-center text-xs text-slate-400 pb-6 w-full">
           <p className="flex items-center justify-center gap-1 text-slate-400 font-medium">
@@ -76,12 +59,6 @@ export default function App() {
         </footer>
 
       </main>
-
-      {/* Standalone HTML Export Modal */}
-      <StandaloneExportModal
-        isOpen={isExportModalOpen}
-        onClose={() => setIsExportModalOpen(false)}
-      />
 
     </div>
   );
