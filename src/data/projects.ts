@@ -1,0 +1,83 @@
+import { Project, ProfileInfo } from '../types';
+
+export const PROFILE_DATA: ProfileInfo = {
+  studioName: 'Mohamed Mahmoud Studio',
+  developerName: 'Mohamed Mahmoud',
+  roleTitle: 'المطور / Mohamed Mahmoud',
+  bio: 'مطور تطبيقات ومواقع إلكترونية | تقديم حلول برمجية ذكية وواجهات مستخدم حديثة',
+  phone: '01031498281',
+  whatsappUrl: 'https://wa.me/201031498281',
+  telegramUrl: 'https://t.me/+201031498281',
+  facebookUrl: 'https://www.facebook.com/mohamed.mahmoud.533503/?locale=ar_AR',
+  instagramUrl: 'https://www.instagram.com/eng_mohamed662010/',
+  tiktokUrl: 'https://www.tiktok.com/@eng_mahamed6',
+  email: 'mohamed.m.alhasaneen@gmail.com',
+  photoUrl: '/your-photo.jpg',
+};
+
+export const PROJECTS: Project[] = [
+  {
+    id: 'rafeeq',
+    title: 'رفيق الثانوية العامة',
+    description: 'منصة ذكية مدعومة بالذكاء الاصطناعي لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.',
+    url: 'https://rafeeqsmart.ai.studio/',
+    category: 'ذكاء اصطناعي • تعليم',
+    icon: 'graduation-cap',
+    color: {
+      badgeBg: 'bg-indigo-500/10',
+      badgeBorder: 'border-indigo-500/25',
+      badgeText: 'text-indigo-400',
+      hoverBg: 'group-hover:bg-indigo-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(99, 102, 241, 0.25)',
+    },
+  },
+  {
+    id: 'chemical',
+    title: 'التفاعلات الكيميائية',
+    description: 'موقع تفاعلي مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.',
+    url: 'https://chemical-reactions.vercel.app/',
+    category: 'محاكاة تفاعلية • كيمياء',
+    icon: 'flask',
+    color: {
+      badgeBg: 'bg-emerald-500/10',
+      badgeBorder: 'border-emerald-500/25',
+      badgeText: 'text-emerald-400',
+      hoverBg: 'group-hover:bg-emerald-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(16, 185, 129, 0.25)',
+    },
+  },
+  {
+    id: 'elmekawy-home',
+    title: 'شركة المكاوي هوم - الموقع الرسمي',
+    description: 'المنصة الرسمية لاستعراض منتجات وخدمات شركة المكاوي هوم والديكورات الحديثة.',
+    url: 'https://almekawy-home-official.vercel.app/',
+    category: 'موقع تعريفي • ديكورات',
+    icon: 'home',
+    color: {
+      badgeBg: 'bg-amber-500/10',
+      badgeBorder: 'border-amber-500/25',
+      badgeText: 'text-amber-400',
+      hoverBg: 'group-hover:bg-amber-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(245, 158, 11, 0.25)',
+    },
+  },
+  {
+    id: 'elmekawy-quotes',
+    title: 'المكاوي هوم - عروض الأسعار',
+    description: 'أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.',
+    url: 'https://al-mekawy-home.vercel.app/',
+    category: 'أداة مالية • حساب تكاليف',
+    icon: 'calculator',
+    color: {
+      badgeBg: 'bg-rose-500/10',
+      badgeBorder: 'border-rose-500/25',
+      badgeText: 'text-rose-400',
+      hoverBg: 'group-hover:bg-rose-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(244, 63, 94, 0.25)',
+    },
+  },
+];

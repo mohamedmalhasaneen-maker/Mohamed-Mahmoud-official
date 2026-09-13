@@ -1,0 +1,6 @@
+{
+  "name": "Mohamed Mahmoud Studio",
+  "description": "الموقع التعريفي ومعرض المشاريع الشخصية للمطور Mohamed Mahmoud - حلول برمجية ذكية وتطبيقات ويب حديثة",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
