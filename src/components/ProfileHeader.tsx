@@ -1,92 +1,135 @@
 import React from 'react';
 import { ProfileInfo } from '../types';
 import { Sparkles, MessageCircle, Send, Phone, Facebook, Instagram, Video } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import defaultDevPhoto from '../assets/developer-photo.jpg';
 
 interface ProfileHeaderProps {
   profile: ProfileInfo;
 }
 
-export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profile }) => {
-  const [currentPhoto, setCurrentPhoto] = React.useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('custom_profile_photo');
-      if (saved) return saved;
-    }
-    return defaultDevPhoto || profile.photoUrl;
-  });
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: -16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.08,
+    },
+  },
+};
 
-  React.useEffect(() => {
-    const saved = localStorage.getItem('custom_profile_photo');
-    if (saved) {
-      setCurrentPhoto(saved);
-    }
-  }, []);
+const itemFadeVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const photoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.94, y: 12 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
+
+export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profile }) => {
+  const [photoSrc, setPhotoSrc] = React.useState<string>(
+    defaultDevPhoto || profile.photoUrl || '/profile.jpg'
+  );
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
       className="flex flex-col items-center text-center mb-8 relative w-full"
     >
       {/* Availability Status Badge */}
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-300 text-xs font-medium mb-5 shadow-sm">
+      <motion.div 
+        variants={itemFadeVariants}
+        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-300 text-xs font-medium mb-5 shadow-sm"
+      >
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
         <span>متاح لتطوير المشاريع البرمجية والحلول الذكية</span>
-      </div>
+      </motion.div>
 
-      {/* Developer Photo Container:
-          Preserves original aspect ratio without circular cropping or distortion,
-          with delicate rounded corners and refined border/shadow
-      */}
-      <div className="relative flex flex-col items-center mb-5">
+      {/* Developer Photo Container */}
+      <motion.div 
+        variants={photoVariants}
+        className="relative flex flex-col items-center mb-5"
+      >
         <div 
           id="developer-photo-wrapper"
-          className="relative max-w-[260px] sm:max-w-[280px] rounded-2xl overflow-hidden border-2 border-sky-400/35 shadow-[0_12px_36px_-6px_rgba(14,165,233,0.3)] bg-slate-900/80 transition-all duration-300 hover:border-sky-400/60"
+          className="relative max-w-[260px] sm:max-w-[280px] rounded-2xl overflow-hidden border-2 border-sky-400/35 shadow-[0_12px_36px_-6px_rgba(14,165,233,0.3)] hover:border-sky-400/60 transition-all duration-300 bg-slate-900/80"
         >
           <img
             id="developer-photo-img"
-            src={currentPhoto}
+            src={photoSrc}
             alt={profile.developerName}
             referrerPolicy="no-referrer"
             className="w-full h-auto block select-none"
             loading="eager"
+            onError={() => {
+              if (photoSrc !== '/profile.jpg') {
+                setPhotoSrc('/profile.jpg');
+              }
+            }}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Studio / App Name */}
-      <h1 
+      <motion.h1 
+        variants={itemFadeVariants}
         id="studio-name"
         className="text-2xl sm:text-3xl font-extrabold tracking-wide text-white mb-1.5 drop-shadow-sm flex items-center justify-center gap-2"
       >
         <span>{profile.studioName}</span>
         <Sparkles className="w-5 h-5 text-sky-400 inline-block shrink-0" />
-      </h1>
+      </motion.h1>
 
       {/* Developer Name */}
-      <h2 
+      <motion.h2 
+        variants={itemFadeVariants}
         id="developer-title"
         className="text-sm sm:text-base font-semibold text-sky-400 mb-3"
       >
         {profile.roleTitle}
-      </h2>
+      </motion.h2>
 
       {/* Short Bio */}
-      <p 
+      <motion.p 
+        variants={itemFadeVariants}
         id="developer-bio"
         className="text-xs sm:text-sm text-slate-300 max-w-sm leading-relaxed px-2 font-normal"
       >
         {profile.bio}
-      </p>
+      </motion.p>
 
       {/* Contact Channels & Social Profiles */}
-      <div id="contact-channels" className="flex flex-col items-center gap-3 mt-5 w-full max-w-sm px-1">
+      <motion.div 
+        variants={itemFadeVariants}
+        id="contact-channels" 
+        className="flex flex-col items-center gap-3 mt-5 w-full max-w-sm px-1"
+      >
+
         {/* Direct Contact with 01031498281 */}
         <div className="flex items-center gap-2 flex-wrap justify-center w-full">
           {/* WhatsApp */}
@@ -168,7 +211,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profile }) => {
             <span>تيك توك</span>
           </a>
         </div>
-      </div>
+      </motion.div>
     </motion.header>
   );
 };

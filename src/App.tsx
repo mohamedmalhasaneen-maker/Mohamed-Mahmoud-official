@@ -2,13 +2,53 @@ import { PROFILE_DATA, PROJECTS } from './data/projects';
 import { ProfileHeader } from './components/ProfileHeader';
 import { ProjectCard } from './components/ProjectCard';
 import { Heart } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+
+const pageContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const sectionHeaderVariants: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const footerVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.1,
+      ease: 'easeOut',
+    },
+  },
+};
 
 export default function App() {
   return (
     <div className="relative min-h-screen w-full bg-[#080d1a] text-slate-100 flex flex-col items-center justify-start py-8 sm:py-12 px-4 selection:bg-sky-500/30 selection:text-sky-200 overflow-x-hidden font-sans">
       
       {/* Ambient background lighting effects */}
-      <div 
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           background: 'radial-gradient(circle at 50% -10%, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.8) 45%, rgba(8, 13, 26, 1) 100%)'
@@ -17,8 +57,13 @@ export default function App() {
       <div className="fixed top-20 -right-40 w-96 h-96 bg-sky-600/10 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="fixed bottom-20 -left-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none z-0" />
 
-      {/* Main Content Container - Centered, Mobile-First */}
-      <main className="relative z-10 w-full max-w-md flex flex-col items-center">
+      {/* Main Content Container - Centered, Mobile-First with Framer Motion Stagger */}
+      <motion.main 
+        variants={pageContainerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 w-full max-w-md flex flex-col items-center"
+      >
         
         {/* Profile Header (Centered at Top) */}
         <ProfileHeader profile={PROFILE_DATA} />
@@ -28,14 +73,17 @@ export default function App() {
           aria-label="قائمة المشاريع" 
           className="w-full space-y-3.5 sm:space-y-4"
         >
-          <div className="flex items-center justify-between px-1 mb-2">
+          <motion.div 
+            variants={sectionHeaderVariants}
+            className="flex items-center justify-between px-1 mb-2"
+          >
             <h2 className="text-xs font-semibold text-slate-400 tracking-wider">
               أبرز الأعمال والمشاريع البرمجية
             </h2>
             <span className="text-[11px] text-sky-400 font-medium">
               {PROJECTS.length} مشاريع متكاملة
             </span>
-          </div>
+          </motion.div>
 
           {PROJECTS.map((project, idx) => (
             <ProjectCard
@@ -47,7 +95,10 @@ export default function App() {
         </section>
 
         {/* Footer */}
-        <footer className="mt-10 sm:mt-12 text-center text-xs text-slate-400 pb-6 w-full">
+        <motion.footer 
+          variants={footerVariants}
+          className="mt-10 sm:mt-12 text-center text-xs text-slate-400 pb-6 w-full"
+        >
           <p className="flex items-center justify-center gap-1 text-slate-400 font-medium">
             <span>صُنع بشغف وإتقان</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500/80 inline" />
@@ -56,10 +107,11 @@ export default function App() {
           <p className="mt-1.5 text-[11px] text-slate-400">
             © {new Date().getFullYear()} Mohamed Mahmoud Studio. جميع الحقوق محفوظة.
           </p>
-        </footer>
+        </motion.footer>
 
-      </main>
+      </motion.main>
 
     </div>
   );
 }
+

@@ -12,10 +12,26 @@ export const PROFILE_DATA: ProfileInfo = {
   instagramUrl: 'https://www.instagram.com/eng_mohamed662010/',
   tiktokUrl: 'https://www.tiktok.com/@eng_mahamed6',
   email: 'mohamed.m.alhasaneen@gmail.com',
-  photoUrl: '/your-photo.jpg',
+  photoUrl: '/profile.jpg',
 };
 
 export const PROJECTS: Project[] = [
+  {
+    id: 'radwa-drawings',
+    title: 'تطبيق رسومات رضوى - Radwa Drawings',
+    description: 'تطبيق وتجربة فنية إبداعية لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.',
+    url: 'https://radwa-drawings.ai.studio/',
+    category: 'رسم وفنون • تطبيق تفاعلي',
+    icon: 'palette',
+    color: {
+      badgeBg: 'bg-purple-500/10',
+      badgeBorder: 'border-purple-500/25',
+      badgeText: 'text-purple-400',
+      hoverBg: 'group-hover:bg-purple-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(168, 85, 247, 0.25)',
+    },
+  },
   {
     id: 'rafeeq',
     title: 'رفيق الثانوية العامة',

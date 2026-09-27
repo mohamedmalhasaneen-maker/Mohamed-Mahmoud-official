@@ -5,18 +5,33 @@ import {
   FlaskConical, 
   Home, 
   Calculator, 
+  Palette,
+  Paintbrush,
   ChevronLeft, 
   ExternalLink,
   Copy,
   Check
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { copyToClipboard } from '../utils/clipboard';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
 }
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [copied, setCopied] = React.useState(false);
@@ -32,6 +47,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         return <Home className={iconClass} />;
       case 'calculator':
         return <Calculator className={iconClass} />;
+      case 'palette':
+        return <Palette className={iconClass} />;
+      case 'paint-brush':
+        return <Paintbrush className={iconClass} />;
       default:
         return <ExternalLink className={iconClass} />;
     }
@@ -49,9 +68,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: 0.15 + index * 0.09 }}
+      whileHover={{ y: -3, scale: 1.01, transition: { duration: 0.25 } }}
+      whileTap={{ scale: 0.985 }}
       className="relative group"
     >
       <a

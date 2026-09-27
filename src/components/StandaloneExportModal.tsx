@@ -111,6 +111,20 @@ export const StandaloneExportModal: React.FC<StandaloneExportModalProps> = ({ is
         <!-- Project Cards Container -->
         <div class="w-full space-y-4">
 
+            <!-- Card: Radwa Drawings -->
+            <a href="https://radwa-drawings.ai.studio/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all shrink-0">
+                        <i class="fa-solid fa-palette text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">تطبيق رسومات رضوى - Radwa Drawings</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">تطبيق إبداعي وتفاعلي مخصص لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>
+            </a>
+
             <!-- Card 1 -->
             <a href="https://rafeeqsmart.ai.studio/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
                 <div class="flex items-center space-x-4 space-x-reverse">
