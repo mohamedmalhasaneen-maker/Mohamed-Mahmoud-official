@@ -7,6 +7,9 @@ import {
   Calculator, 
   Palette,
   Paintbrush,
+  Dna,
+  Camera,
+  Image as ImageIcon,
   ChevronLeft, 
   ExternalLink,
   Copy,
@@ -51,6 +54,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         return <Palette className={iconClass} />;
       case 'paint-brush':
         return <Paintbrush className={iconClass} />;
+      case 'dna':
+        return <Dna className={iconClass} />;
+      case 'camera':
+        return <Camera className={iconClass} />;
+      case 'image':
+        return <ImageIcon className={iconClass} />;
       default:
         return <ExternalLink className={iconClass} />;
     }

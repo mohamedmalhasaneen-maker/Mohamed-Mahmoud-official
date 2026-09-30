@@ -125,6 +125,20 @@ export const StandaloneExportModal: React.FC<StandaloneExportModalProps> = ({ is
                 <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>
             </a>
 
+            <!-- Card: Ms Nada Bio -->
+            <a href="https://ms-nada-bio.vercel.app/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/25 flex items-center justify-center text-teal-400 group-hover:bg-teal-500 group-hover:text-white transition-all shrink-0">
+                        <i class="fa-solid fa-dna text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">أطلس الأحياء التفاعلي 3D - Ms. Nada Bio</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">أطلس تشريحي تفاعلي ثلاثي الأبعاد لطلاب الثانوية العامة: استكشاف الهيكل العظمي والعضلي والعصبي بمجسمات واقعية دقيقة.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>
+            </a>
+
             <!-- Card 1 -->
             <a href="https://rafeeqsmart.ai.studio/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
                 <div class="flex items-center space-x-4 space-x-reverse">
@@ -176,6 +190,20 @@ export const StandaloneExportModal: React.FC<StandaloneExportModalProps> = ({ is
                     <div>
                         <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">المكاوي هوم - عروض الأسعار</h3>
                         <p class="text-xs text-slate-400 mt-1 leading-relaxed">أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>
+            </a>
+
+            <!-- Card 5: Al Mekawy UPVC Photos -->
+            <a href="https://al-mekawy-home-upvc-photo.vercel.app/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-all shrink-0">
+                        <i class="fa-solid fa-camera text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">المكاوي هوم - معرض صور UPVC</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">معرض صور رقمي وتخزين سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك.</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>

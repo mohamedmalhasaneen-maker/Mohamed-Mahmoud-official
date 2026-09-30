@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   url: string;
   category: string;
-  icon: 'graduation-cap' | 'flask' | 'home' | 'calculator' | 'palette' | 'paint-brush';
+  icon: 'graduation-cap' | 'flask' | 'home' | 'calculator' | 'palette' | 'paint-brush' | 'dna' | 'camera' | 'image';
   color: {
     badgeBg: string;
     badgeBorder: string;
