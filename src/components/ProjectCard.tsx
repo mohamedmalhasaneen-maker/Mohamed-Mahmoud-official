@@ -10,6 +10,8 @@ import {
   Dna,
   Camera,
   Image as ImageIcon,
+  Maximize2 as AppWindow,
+  Store,
   ChevronLeft, 
   ExternalLink,
   Copy,
@@ -60,6 +62,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         return <Camera className={iconClass} />;
       case 'image':
         return <ImageIcon className={iconClass} />;
+      case 'app-window':
+        return <AppWindow className={iconClass} />;
+      case 'store':
+        return <Store className={iconClass} />;
       default:
         return <ExternalLink className={iconClass} />;
     }
