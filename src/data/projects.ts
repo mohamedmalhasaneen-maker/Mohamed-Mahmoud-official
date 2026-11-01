@@ -1,10 +1,22 @@
-import { Project, ProfileInfo } from '../types';
+import {
+  Project,
+  ProfileInfo,
+  ServiceItem,
+  SkillCategoryGroup,
+  ProjectFilterGroup,
+} from '../types';
 
 export const PROFILE_DATA: ProfileInfo = {
   studioName: 'Mohamed Mahmoud Studio',
   developerName: 'Mohamed Mahmoud',
   roleTitle: 'المطور / Mohamed Mahmoud',
   bio: 'مطور تطبيقات ومواقع إلكترونية | تقديم حلول برمجية ذكية وواجهات مستخدم حديثة',
+  typingRoles: [
+    'مطور ومصمم مواقع وتطبيقات الويب التفاعلية',
+    'بناء المتاجر الإلكترونية والمنصات التعليمية الحديثة',
+    'تطوير الحلول البرمجية الذكية وأدوات الأعمال',
+    'تصميم واجهات مستخدم عصرية سريعة ومتجاوبة',
+  ],
   phone: '01031498281',
   whatsappUrl: 'https://wa.me/201031498281',
   telegramUrl: 'https://t.me/+201031498281',
@@ -15,13 +27,28 @@ export const PROFILE_DATA: ProfileInfo = {
   photoUrl: '/profile.jpg',
 };
 
+export const PROJECT_FILTERS: { id: ProjectFilterGroup; label: string }[] = [
+  { id: 'all', label: 'جميع الأعمال' },
+  { id: 'educational', label: 'منصات تعليمية وتفاعلية' },
+  { id: 'corporate', label: 'مواقع شركات ومعارض' },
+  { id: 'commerce-tools', label: 'متاجر وأدوات ذكية' },
+];
+
 export const PROJECTS: Project[] = [
   {
     id: 'radwa-drawings',
     title: 'تطبيق رسومات رضوى - Radwa Drawings',
-    description: 'تطبيق وتجربة فنية إبداعية لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.',
+    description:
+      'تطبيق وتجربة فنية إبداعية لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.',
     url: 'https://radwa-drawings.ai.studio/',
     category: 'رسم وفنون • تطبيق تفاعلي',
+    filterGroup: 'educational',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Interactive Canvas'],
+    highlights: [
+      'مساحة رسم رقمية تفاعلية سلسة ومتجاوبة مع اللمس والماوس',
+      'معرض منظم لاستعراض اللوحات والأعمال الفنية الرقمية بوضوح عالٍ',
+      'واجهة إبداعية مريحة وسريعة الاستخدام على الهواتف والأجهزة اللوحية',
+    ],
     icon: 'palette',
     color: {
       badgeBg: 'bg-purple-500/10',
@@ -29,15 +56,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-purple-400',
       hoverBg: 'group-hover:bg-purple-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(168, 85, 247, 0.25)',
+      glow: 'rgba(168, 85, 247, 0.28)',
+      accentHex: '#9333ea',
+      secondaryHex: '#38bdf8',
     },
   },
   {
     id: 'ms-nada-bio',
     title: 'أطلس الأحياء التفاعلي 3D - Ms. Nada Bio',
-    description: 'أطلس تشريحي تفاعلي ثلاثي الأبعاد لطلاب الثانوية العامة: استكشاف الهيكل العظمي، الجهاز العضلي، والجهاز العصبي بمجسمات واقعية دقيقة.',
+    description:
+      'أطلس تشريحي تفاعلي ثلاثي الأبعاد لطلاب الثانوية العامة: استكشاف الهيكل العظمي، الجهاز العضلي، والجهاز العصبي بمجسمات واقعية دقيقة.',
     url: 'https://ms-nada-bio.vercel.app/',
     category: 'أحياء • أطلس تفاعلي 3D',
+    filterGroup: 'educational',
+    techStack: ['React', '3D Web Graphics', 'TypeScript', 'Tailwind CSS'],
+    highlights: [
+      'استكشاف تفاعلي ثلاثي الأبعاد للهيكل العظمي والجهاز العضلي والجهاز العصبي',
+      'مصمم خصيصاً لطلاب الثانوية العامة لتبسيط التشريح بمجسمات واقعية دقيقة',
+      'تحكم سلس في الدوران والتكبير مع شروحات علمية واضحة باللغة العربية',
+    ],
     icon: 'dna',
     color: {
       badgeBg: 'bg-teal-500/10',
@@ -45,15 +82,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-teal-400',
       hoverBg: 'group-hover:bg-teal-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(20, 184, 166, 0.25)',
+      glow: 'rgba(20, 184, 166, 0.28)',
+      accentHex: '#0d9488',
+      secondaryHex: '#06b6d4',
     },
   },
   {
     id: 'rafeeq',
     title: 'رفيق الثانوية العامة',
-    description: 'منصة ذكية مدعومة بالذكاء الاصطناعي لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.',
+    description:
+      'منصة ذكية مدعومة بالذكاء الاصطناعي لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.',
     url: 'https://rafeeqsmart.ai.studio/',
     category: 'ذكاء اصطناعي • تعليم',
+    filterGroup: 'educational',
+    techStack: ['React', 'AI Integration', 'TypeScript', 'Modern UI'],
+    highlights: [
+      'مساعد ذكي يدعم طلاب الثانوية العامة في تنظيم جدول المذاكرة والمتابعة',
+      'تبسيط المفاهيم الدراسية وتقديم تجربة تعلم تفاعلية مخصصة للطالب',
+      'واجهة عربية عصرية تركز على الهدوء البصري وسهولة الوصول للأدوات',
+    ],
     icon: 'graduation-cap',
     color: {
       badgeBg: 'bg-indigo-500/10',
@@ -61,15 +108,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-indigo-400',
       hoverBg: 'group-hover:bg-indigo-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(99, 102, 241, 0.25)',
+      glow: 'rgba(99, 102, 241, 0.28)',
+      accentHex: '#4f46e5',
+      secondaryHex: '#8b5cf6',
     },
   },
   {
     id: 'chemical',
     title: 'التفاعلات الكيميائية',
-    description: 'موقع تفاعلي مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.',
+    description:
+      'موقع تفاعلي مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.',
     url: 'https://chemical-reactions.vercel.app/',
     category: 'محاكاة تفاعلية • كيمياء',
+    filterGroup: 'educational',
+    techStack: ['React', 'Interactive Simulation', 'Tailwind CSS', 'Vercel'],
+    highlights: [
+      'محاكاة بصرية تفاعلية للتفاعلات والمعادلات الكيميائية خطوة بخطوة',
+      'تحويل المفاهيم الكيميائية المجردة إلى تجربة مرئية ممتعة وسهلة الفهم',
+      'تصميم متجاوب بالكامل يتيح للطلاب التجربة من الهاتف أو الكمبيوتر',
+    ],
     icon: 'flask',
     color: {
       badgeBg: 'bg-emerald-500/10',
@@ -77,15 +134,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-emerald-400',
       hoverBg: 'group-hover:bg-emerald-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(16, 185, 129, 0.25)',
+      glow: 'rgba(16, 185, 129, 0.28)',
+      accentHex: '#059669',
+      secondaryHex: '#22d3ee',
     },
   },
   {
     id: 'elmekawy-home',
     title: 'شركة المكاوي هوم - الموقع الرسمي',
-    description: 'المنصة الرسمية لاستعراض منتجات وخدمات شركة المكاوي هوم والديكورات الحديثة.',
+    description:
+      'المنصة الرسمية لاستعراض منتجات وخدمات شركة المكاوي هوم والديكورات الحديثة.',
     url: 'https://almekawy-home-official.vercel.app/',
     category: 'موقع تعريفي • ديكورات',
+    filterGroup: 'corporate',
+    techStack: ['React', 'Tailwind CSS', 'Responsive UI', 'Vercel'],
+    highlights: [
+      'واجهة رسمية تعكس هوية شركة المكاوي هوم ومنتجات الديكورات الحديثة',
+      'عرض منظم للخدمات والأقسام مع تجربة تصفح سريعة على جميع الشاشات',
+      'ربط مباشر بوسائل التواصل لتسهيل استفسارات وطلبات العملاء',
+    ],
     icon: 'home',
     color: {
       badgeBg: 'bg-amber-500/10',
@@ -93,15 +160,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-amber-400',
       hoverBg: 'group-hover:bg-amber-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(245, 158, 11, 0.25)',
+      glow: 'rgba(245, 158, 11, 0.28)',
+      accentHex: '#d97706',
+      secondaryHex: '#3b82f6',
     },
   },
   {
     id: 'elmekawy-quotes',
     title: 'المكاوي هوم - عروض الأسعار',
-    description: 'أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.',
+    description:
+      'أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.',
     url: 'https://al-mekawy-home.vercel.app/',
     category: 'أداة مالية • حساب تكاليف',
+    filterGroup: 'commerce-tools',
+    techStack: ['React', 'TypeScript', 'Business Logic', 'Tailwind CSS'],
+    highlights: [
+      'حساب فوري ودقيق لتكاليف وعروض الأسعار وفق المقاسات والمواصفات',
+      'تقليل الوقت والجهد في إعداد المقايسات المالية لعملاء الشركة',
+      'واجهة واضحة ومنظمة لإدخال البيانات ومراجعة تفاصيل العرض المالي',
+    ],
     icon: 'calculator',
     color: {
       badgeBg: 'bg-rose-500/10',
@@ -109,15 +186,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-rose-400',
       hoverBg: 'group-hover:bg-rose-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(244, 63, 94, 0.25)',
+      glow: 'rgba(244, 63, 94, 0.28)',
+      accentHex: '#e11d48',
+      secondaryHex: '#8b5cf6',
     },
   },
   {
     id: 'elmekawy-upvc-photos',
     title: 'المكاوي هوم - معرض صور UPVC',
-    description: 'معرض صور رقمي وتخزين سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك والبلكونات.',
+    description:
+      'معرض صور رقمي وتخزين سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك والبلكونات.',
     url: 'https://al-mekawy-home-upvc-photo.vercel.app/',
     category: 'معرض صور • منتجات UPVC',
+    filterGroup: 'corporate',
+    techStack: ['React', 'Cloud Media Gallery', 'Tailwind CSS', 'Vercel'],
+    highlights: [
+      'معرض رقمي منظم لمنتجات قطاعات UPVC والأبواب والشبابيك والبلكونات',
+      'تصفح بصري سريع مع معاينة واضحة لتفاصيل التشطيب والتنفيذ الواقعي',
+      'بنية سحابية مرنة تسهل استعراض الأعمال أمام العملاء من أي جهاز',
+    ],
     icon: 'camera',
     color: {
       badgeBg: 'bg-cyan-500/10',
@@ -125,15 +212,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-cyan-400',
       hoverBg: 'group-hover:bg-cyan-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(6, 182, 212, 0.25)',
+      glow: 'rgba(6, 182, 212, 0.28)',
+      accentHex: '#0891b2',
+      secondaryHex: '#2563eb',
     },
   },
   {
     id: 'the-best-windows',
     title: 'ذا بيست ويندوز - شبابيك وأبواب UPVC',
-    description: 'الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر.',
+    description:
+      'الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر.',
     url: 'https://the-best-windows.vercel.app/',
     category: 'موقع تعريفي • أبواب وشبابيك UPVC',
+    filterGroup: 'corporate',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'SEO Ready'],
+    highlights: [
+      'الموقع التعريفي الرسمي لشركة The Best Windows لقطاعات UPVC في مصر',
+      'إبراز مزايا العزل والجودة وتشكيلات الأبواب والشبابيك بتصميم عصري',
+      'تجربة مستخدم متكاملة تدعم الوصول السريع لطلب المعاينة والتواصل',
+    ],
     icon: 'app-window',
     color: {
       badgeBg: 'bg-blue-500/10',
@@ -141,15 +238,25 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-blue-400',
       hoverBg: 'group-hover:bg-blue-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(59, 130, 246, 0.25)',
+      glow: 'rgba(59, 130, 246, 0.28)',
+      accentHex: '#2563eb',
+      secondaryHex: '#06b6d4',
     },
   },
   {
     id: 'elmahlawy-store',
     title: 'المحلاوي ستور - متجر إلكتروني',
-    description: 'متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب.',
+    description:
+      'متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب.',
     url: 'https://elmahlawy-store.vercel.app/',
     category: 'متجر إلكتروني • تسوق',
+    filterGroup: 'commerce-tools',
+    techStack: ['React', 'E-Commerce UI', 'WhatsApp Checkout', 'Tailwind CSS'],
+    highlights: [
+      'كتالوج منتجات إلكتروني يعرض الصور والمواصفات والأسعار بوضوح تام',
+      'تجربة تسوق سلسة مع إمكانية الطلب المباشر والسريع عبر واتساب',
+      'تصميم Mobile-First مهيأ لسرعة التصفح والشراء من الهواتف الذكية',
+    ],
     icon: 'store',
     color: {
       badgeBg: 'bg-orange-500/10',
@@ -157,7 +264,189 @@ export const PROJECTS: Project[] = [
       badgeText: 'text-orange-400',
       hoverBg: 'group-hover:bg-orange-600',
       hoverText: 'group-hover:text-white',
-      glow: 'rgba(249, 115, 22, 0.25)',
+      glow: 'rgba(249, 115, 22, 0.28)',
+      accentHex: '#ea580c',
+      secondaryHex: '#7c3aed',
     },
+  },
+];
+
+export const SERVICES_DATA: ServiceItem[] = [
+  {
+    id: 'corporate-websites',
+    title: 'تصميم وتطوير المواقع التعريفية للشركات',
+    description:
+      'بناء مواقع إلكترونية رسمية عصرية تعكس الهوية الاحترافية للشركات والمؤسسات، مع عرض متكامل للخدمات والمنتجات وتهيئة مثالية لمحركات البحث وجميع الشاشات.',
+    icon: 'globe',
+    accentFrom: '#2563eb',
+    accentTo: '#06b6d4',
+    glowColor: 'rgba(37, 99, 235, 0.22)',
+    targetFilter: 'corporate',
+  },
+  {
+    id: 'interactive-webapps',
+    title: 'تطوير تطبيقات الويب والأنظمة التفاعلية',
+    description:
+      'تحويل الأفكار إلى تطبيقات ويب حديثة عالية الأداء بواجهات تفاعلية ديناميكية، ومعارض سحابية، وتجارب استخدام سلسة تعمل بكفاءة على الهاتف والكمبيوتر.',
+    icon: 'layers',
+    accentFrom: '#7c3aed',
+    accentTo: '#3b82f6',
+    glowColor: 'rgba(124, 58, 237, 0.22)',
+    targetFilter: 'all',
+  },
+  {
+    id: 'ecommerce-solutions',
+    title: 'بناء المتاجر الإلكترونية وأنظمة الطلب المباشر',
+    description:
+      'تصميم متاجر إلكترونية متكاملة لعرض المنتجات والمواصفات والأسعار بشكل جذاب، مع ربط ذكي وسريع لإتمام الطلبات مباشرة عبر واتساب لتعزيز المبيعات.',
+    icon: 'shopping-bag',
+    accentFrom: '#06b6d4',
+    accentTo: '#2563eb',
+    glowColor: 'rgba(6, 182, 212, 0.22)',
+    targetFilter: 'commerce-tools',
+  },
+  {
+    id: 'educational-3d',
+    title: 'المنصات التعليمية والمحاكاة التفاعلية و 3D',
+    description:
+      'تطوير منصات تعليمية مبتكرة، ومختبرات محاكاة علمية، وأطالس تفاعلية ثلاثية الأبعاد (3D) تساعد الطلاب والمعلمين على تقديم المحتوى العلمي بأسلوب بصري مشوق.',
+    icon: 'sparkles',
+    accentFrom: '#8b5cf6',
+    accentTo: '#06b6d4',
+    glowColor: 'rgba(139, 92, 246, 0.22)',
+    targetFilter: 'educational',
+  },
+  {
+    id: 'smart-business-tools',
+    title: 'الحلول البرمجية الذكية وأدوات الأعمال',
+    description:
+      'ابتكار أدوات مخصصة لأتمتة الأعمال مثل حاسبات التكاليف وعروض الأسعار الفورية، والمنصات المدعومة بالذكاء الاصطناعي لتوفير الوقت ورفع كفاءة العمل.',
+    icon: 'cpu',
+    accentFrom: '#3b82f6',
+    accentTo: '#9333ea',
+    glowColor: 'rgba(59, 130, 246, 0.22)',
+    targetFilter: 'commerce-tools',
+  },
+  {
+    id: 'modern-ui-ux',
+    title: 'تصميم واجهات وتجربة المستخدم (UI/UX)',
+    description:
+      'تصميم واجهات عربية وإنجليزية عصرية تركز على وضوح المحتوى، الحركات التفاعلية الناعمة، التباين المريح للعين، وتجربة Mobile-First متقنة في كل تفصيلة.',
+    icon: 'layout',
+    accentFrom: '#ec4899',
+    accentTo: '#7c3aed',
+    glowColor: 'rgba(236, 72, 153, 0.2)',
+    targetFilter: 'all',
+  },
+];
+
+export const SKILLS_GROUPS: SkillCategoryGroup[] = [
+  {
+    id: 'frontend-core',
+    title: 'هندسة وتطوير الواجهات الأمامية',
+    subtitle: 'بناء تطبيقات ومواقع سريعة بهيكل برمجي نظيف وقابل للتوسع',
+    accentGradient: 'from-blue-600 via-indigo-600 to-cyan-500',
+    skills: [
+      {
+        name: 'React.js',
+        nameEn: 'React 19',
+        role: 'بناء واجهات المستخدم التفاعلية والمكونات القابلة لإعادة الاستخدام',
+        icon: 'code',
+        accentColor: '#06b6d4',
+      },
+      {
+        name: 'TypeScript & JavaScript',
+        nameEn: 'ESNext / TS',
+        role: 'كتابة كود برمجي موثوق ومنظم للتطبيقات والأدوات التفاعلية',
+        icon: 'file-code',
+        accentColor: '#3b82f6',
+      },
+      {
+        name: 'Tailwind CSS',
+        nameEn: 'Tailwind v4',
+        role: 'تصميم أنظمة بصرية متناسقة سريعة الاستجابة وداعمة للوضعين الليلي والنهاري',
+        icon: 'palette',
+        accentColor: '#22d3ee',
+      },
+      {
+        name: 'HTML5 & CSS3 الحديثة',
+        nameEn: 'Semantic Web',
+        role: 'هيكلة قياسية متوافقة مع معايير الويب ومحركات البحث ودعم RTL الكامل',
+        icon: 'layout',
+        accentColor: '#6366f1',
+      },
+    ],
+  },
+  {
+    id: 'interactive-motion',
+    title: 'التجارب التفاعلية والرسوميات الحركية',
+    subtitle: 'إثراء تجربة التصفح بحركات مدروسة ومجسمات تعليمية تفاعلية',
+    accentGradient: 'from-violet-600 via-purple-600 to-blue-500',
+    skills: [
+      {
+        name: 'Framer Motion',
+        nameEn: 'Motion UI',
+        role: 'تنفيذ انتقالات سلسة وحركات تفاعلية ناعمة عالية الأداء',
+        icon: 'sparkles',
+        accentColor: '#8b5cf6',
+      },
+      {
+        name: 'تجارب الويب ثلاثية الأبعاد',
+        nameEn: '3D & Simulations',
+        role: 'بناء المجسمات التعليمية التفاعلية والمحاكاة العلمية البصرية على المتصفح',
+        icon: 'box',
+        accentColor: '#14b8a6',
+      },
+      {
+        name: 'تصميم متجاوب Mobile-First',
+        nameEn: 'Responsive UX',
+        role: 'تجربة استخدام مثالية على الهواتف الذكية والأجهزة اللوحية والشاشات الكبيرة',
+        icon: 'smartphone',
+        accentColor: '#a855f7',
+      },
+      {
+        name: 'واجهات Glassmorphism الحديثة',
+        nameEn: 'Visual Systems',
+        role: 'توظيف التدرجات اللونية والإضاءات الناعمة بتوازن بصري احترافي',
+        icon: 'layers',
+        accentColor: '#ec4899',
+      },
+    ],
+  },
+  {
+    id: 'apps-deployment',
+    title: 'الحلول الذكية والأداء والنشر السحابي',
+    subtitle: 'تحويل المتطلبات العملية إلى منصات منشورة ومستقرة على الإنترنت',
+    accentGradient: 'from-cyan-500 via-blue-600 to-violet-600',
+    skills: [
+      {
+        name: 'دمج تقنيات الذكاء الاصطناعي',
+        nameEn: 'AI Web Apps',
+        role: 'تطوير منصات تعليمية وأدوات ذكية تساعد المستخدمين بفعالية',
+        icon: 'cpu',
+        accentColor: '#6366f1',
+      },
+      {
+        name: 'أدوات الحساب والمتاجر الرقمية',
+        nameEn: 'Commerce & Tools',
+        role: 'برمجة حاسبات عروض الأسعار وكتالوجات المنتجات المرتبطة بواتساب',
+        icon: 'zap',
+        accentColor: '#f59e0b',
+      },
+      {
+        name: 'Vite وأدوات البناء السريعة',
+        nameEn: 'Modern Tooling',
+        role: 'تجميع وتحسين أداء الملفات لضمان سرعة تحميل فائقة للموقع',
+        icon: 'rocket',
+        accentColor: '#3b82f6',
+      },
+      {
+        name: 'النشر السحابي وتهيئة SEO',
+        nameEn: 'Vercel & SEO',
+        role: 'استضافة المشاريع سحابياً بكفاءة عالية مع ضبط بيانات المشاركة والميتا',
+        icon: 'globe',
+        accentColor: '#06b6d4',
+      },
+    ],
   },
 ];

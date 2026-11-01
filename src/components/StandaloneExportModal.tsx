@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Code2, Copy, Check, Download, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { copyToClipboard } from '../utils/clipboard';
 
 interface StandaloneExportModalProps {
@@ -218,6 +218,20 @@ export const StandaloneExportModal: React.FC<StandaloneExportModalProps> = ({ is
                     <div>
                         <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">ذا بيست ويندوز - شبابيك وأبواب UPVC</h3>
                         <p class="text-xs text-slate-400 mt-1 leading-relaxed">الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر.</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>
+            </a>
+
+            <!-- Card 7: Elmahlawy Store -->
+            <a href="https://elmahlawy-store.vercel.app/" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-4 flex items-center justify-between group cursor-pointer block">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/25 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all shrink-0">
+                        <i class="fa-solid fa-store text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base text-slate-100 group-hover:text-sky-400 transition-colors">المحلاوي ستور - متجر إلكتروني</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب.</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-left text-slate-500 group-hover:text-sky-400 group-hover:-translate-x-1 transition-all mr-2 shrink-0"></i>

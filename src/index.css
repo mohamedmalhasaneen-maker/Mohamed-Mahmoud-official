@@ -1,25 +1,237 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-xs: 23.5rem;
+}
 
 @layer base {
-  * {
-    border-color: rgba(255, 255, 255, 0.08);
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: clip;
+    max-width: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
-    font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: clip;
+    max-width: 100%;
+    min-width: 320px;
+    overflow-wrap: break-word;
+  }
+
+  button,
+  a,
+  select,
+  input,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  .font-latin {
+    font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
   }
 }
 
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Safe-Area Helpers for Notched Smartphones */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
-.glass-panel:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 14px 35px -10px rgba(14, 165, 233, 0.22);
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+.px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+/* Custom Scrollbar (Desktop) */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(148, 163, 184, 0.12);
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background: #060b18;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2563eb 0%, #7c3aed 55%, #06b6d4 100%);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 55%, #22d3ee 100%);
+  }
+}
+
+/* Signature Gradient Text & Surfaces */
+.text-studio-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .text-studio-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-studio-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 52%, #06b6d4 100%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bg-studio-gradient {
+    background-size: 180% 180%;
+    animation: studioGradientShift 9s ease infinite;
+  }
+}
+
+/* Interactive Spotlight Surface — Desktop Mouse Only (Prevents Sticky Hover on Touch) */
+.spotlight-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(56, 189, 248, 0.14);
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      380px circle at var(--mouse-x) var(--mouse-y),
+      var(--spotlight-color),
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Touch-Safe Card Elevation */
+.touch-card-interactive {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.touch-card-interactive:active {
+  transform: scale(0.988);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .touch-card-interactive:hover {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+/* Subtle Architectural Grid Pattern */
+.studio-grid-pattern {
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+}
+
+.dark .studio-grid-pattern {
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.045) 1px, transparent 1px);
+}
+
+/* Compositor-Friendly Ambient Animations */
+@keyframes studioGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes spinVerySlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes caretBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .animate-float-desktop {
+    animation: floatSlow 10s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-spin-desktop {
+    animation: spinVerySlow 32s linear infinite;
+    will-change: transform;
+  }
+}
+
+.animate-caret {
+  animation: caretBlink 1s infinite;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
