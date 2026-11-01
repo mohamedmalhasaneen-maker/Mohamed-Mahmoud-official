@@ -5,11 +5,6 @@ import {
   MessageCircle,
   ArrowDown,
   FolderGit2,
-  Send,
-  Phone,
-  Facebook,
-  Instagram,
-  Video,
 } from 'lucide-react';
 import { ProfileInfo } from '../types';
 import { scrollToElementById } from '../utils/scroll';
@@ -210,71 +205,6 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
                 >
                   <MessageCircle className="w-5 h-5 text-emerald-500 group-hover:text-white shrink-0 transition-colors" />
                   <span>تواصل عبر واتساب</span>
-                </a>
-              </div>
-
-              {/* Touch-Friendly Quick Channels Bar (All >= 44px Hitboxes) */}
-              <div
-                id="contact-channels"
-                className="mt-6 pt-5 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-2 w-full"
-              >
-                <a
-                  id="contact-telegram-btn"
-                  href={profile.telegramUrl || 'https://t.me/+201031498281'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-white/[0.05] hover:bg-sky-600 dark:hover:bg-sky-600 active:scale-95 text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/90 dark:border-white/10 text-xs font-bold transition-all"
-                >
-                  <Send className="w-3.5 h-3.5 text-sky-500 dark:text-sky-400 shrink-0" />
-                  <span>تيليجرام</span>
-                </a>
-
-                <a
-                  id="contact-phone-btn"
-                  href={`tel:${profile.phone || '01031498281'}`}
-                  className="min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-white/[0.05] hover:bg-blue-600 dark:hover:bg-blue-600 active:scale-95 text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/90 dark:border-white/10 text-xs font-bold transition-all"
-                >
-                  <Phone className="w-3.5 h-3.5 text-blue-500 dark:text-cyan-400 shrink-0" />
-                  <span className="font-latin">{profile.phone || '01031498281'}</span>
-                </a>
-
-                <a
-                  id="social-facebook-btn"
-                  href={
-                    profile.facebookUrl ||
-                    'https://www.facebook.com/mohamed.mahmoud.533503/?locale=ar_AR'
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="فيسبوك"
-                  className="min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-white/[0.05] hover:bg-[#1877F2] active:scale-95 text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/90 dark:border-white/10 text-xs font-bold transition-all"
-                >
-                  <Facebook className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                  <span>فيسبوك</span>
-                </a>
-
-                <a
-                  id="social-instagram-btn"
-                  href={profile.instagramUrl || 'https://www.instagram.com/eng_mohamed662010/'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="انستجرام"
-                  className="min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-white/[0.05] hover:bg-[#E4405F] active:scale-95 text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/90 dark:border-white/10 text-xs font-bold transition-all"
-                >
-                  <Instagram className="w-3.5 h-3.5 text-pink-500 shrink-0" />
-                  <span>انستجرام</span>
-                </a>
-
-                <a
-                  id="social-tiktok-btn"
-                  href={profile.tiktokUrl || 'https://www.tiktok.com/@eng_mahamed6'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="تيك توك"
-                  className="min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/90 dark:bg-white/[0.05] hover:bg-slate-900 active:scale-95 text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/90 dark:border-white/10 text-xs font-bold transition-all"
-                >
-                  <Video className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
-                  <span>تيك توك</span>
                 </a>
               </div>
             </m.div>

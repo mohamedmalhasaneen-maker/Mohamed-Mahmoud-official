@@ -5,9 +5,6 @@ import {
   Send,
   Phone,
   Mail,
-  Facebook,
-  Instagram,
-  Video,
   Copy,
   Check,
   ArrowUpLeft,
@@ -308,6 +305,7 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+                  {/* Facebook Official Colorful App Icon */}
                   <a
                     href={
                       profile.facebookUrl ||
@@ -315,31 +313,73 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.04] hover:bg-[#1877F2] dark:hover:bg-[#1877F2] active:scale-[0.98] text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/80 dark:border-white/10 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all group"
+                    className="min-h-[54px] px-3.5 py-2.5 rounded-xl bg-slate-50/90 dark:bg-white/[0.04] hover:bg-[#1877F2]/[0.08] dark:hover:bg-[#1877F2]/[0.14] active:scale-[0.98] text-slate-800 dark:text-slate-100 border border-slate-200/85 dark:border-white/10 hover:border-[#1877F2]/50 font-bold text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-2.5 transition-all group"
                   >
-                    <Facebook className="w-4 h-4 text-[#1877F2] group-hover:text-white shrink-0 transition-colors" />
+                    <span className="w-9 h-9 rounded-[10px] bg-gradient-to-b from-[#18ACFE] to-[#0163E0] shadow-[0_4px_12px_rgba(24,119,242,0.38)] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-white">
+                        <path d="M15.12 5.32H17V2.14A26.11 26.11 0 0 0 14.26 2c-2.72 0-4.58 1.66-4.58 4.7v2.62H6.61v3.56h3.07V22h3.68v-9.12h3.06l.46-3.56h-3.52V6.65c0-1.05.29-1.73 1.76-1.73Z" />
+                      </svg>
+                    </span>
                     <span>فيسبوك</span>
                   </a>
 
+                  {/* Instagram Official Multi-Color Gradient App Icon */}
                   <a
                     href={
                       profile.instagramUrl || 'https://www.instagram.com/eng_mohamed662010/'
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.04] hover:bg-[#E4405F] dark:hover:bg-[#E4405F] active:scale-[0.98] text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/80 dark:border-white/10 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all group"
+                    className="min-h-[54px] px-3.5 py-2.5 rounded-xl bg-slate-50/90 dark:bg-white/[0.04] hover:bg-[#E1306C]/[0.08] dark:hover:bg-[#E1306C]/[0.14] active:scale-[0.98] text-slate-800 dark:text-slate-100 border border-slate-200/85 dark:border-white/10 hover:border-[#E1306C]/50 font-bold text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-2.5 transition-all group"
                   >
-                    <Instagram className="w-4 h-4 text-[#E4405F] group-hover:text-white shrink-0 transition-colors" />
+                    <span
+                      className="w-9 h-9 rounded-[10px] shadow-[0_4px_12px_rgba(225,48,108,0.38)] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        background:
+                          'radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)',
+                      }}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        className="w-[21px] h-[21px] fill-none stroke-white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+                        <circle cx="12" cy="12" r="4.25" />
+                        <circle cx="17.4" cy="6.6" r="1.15" className="fill-white stroke-none" />
+                      </svg>
+                    </span>
                     <span>انستجرام</span>
                   </a>
 
+                  {/* TikTok Official Dual-Neon App Icon */}
                   <a
                     href={profile.tiktokUrl || 'https://www.tiktok.com/@eng_mahamed6'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.04] hover:bg-slate-900 dark:hover:bg-black active:scale-[0.98] text-slate-700 dark:text-slate-200 hover:text-white border border-slate-200/80 dark:border-white/10 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all group"
+                    className="min-h-[54px] px-3.5 py-2.5 rounded-xl bg-slate-50/90 dark:bg-white/[0.04] hover:bg-slate-900/[0.06] dark:hover:bg-white/[0.09] active:scale-[0.98] text-slate-800 dark:text-slate-100 border border-slate-200/85 dark:border-white/10 hover:border-[#25F4EE]/60 dark:hover:border-[#FE2C55]/55 font-bold text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-2.5 transition-all group"
                   >
-                    <Video className="w-4 h-4 text-cyan-500 group-hover:text-cyan-300 shrink-0 transition-colors" />
+                    <span className="w-9 h-9 rounded-[10px] bg-[#07070b] border border-slate-900/10 dark:border-white/15 shadow-[0_4px_12px_rgba(0,0,0,0.32)] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5">
+                        <path
+                          fill="#25F4EE"
+                          transform="translate(-0.85 -0.65)"
+                          d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z"
+                        />
+                        <path
+                          fill="#FE2C55"
+                          transform="translate(0.85 0.65)"
+                          d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z"
+                        />
+                        <path
+                          fill="#FFFFFF"
+                          d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z"
+                        />
+                      </svg>
+                    </span>
                     <span>تيك توك</span>
                   </a>
                 </div>
