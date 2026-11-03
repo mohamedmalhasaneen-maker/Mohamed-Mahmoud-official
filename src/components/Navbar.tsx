@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, MessageCircle, Code2, ChevronLeft } from 'lucide-react';
+import { Sun, Moon, Menu, X, MessageCircle, ChevronLeft } from 'lucide-react';
 import { ThemeMode } from '../types';
 import { scrollToElementById } from '../utils/scroll';
 
@@ -125,8 +125,15 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
               }}
               className="flex items-center gap-2 sm:gap-2.5 group min-w-0 py-1"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 via-violet-600 to-cyan-500 flex items-center justify-center text-white shadow-[0_6px_18px_-4px_rgba(37,99,235,0.5)] shrink-0">
-                <Code2 className="w-5 h-5" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-[#040814] ring-1 ring-cyan-400/45 shadow-[0_6px_18px_-4px_rgba(37,99,235,0.55)] flex items-center justify-center shrink-0">
+                <img
+                  src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_1.08.01_AM_48e19d64.jpeg"
+                  alt={studioName}
+                  width={44}
+                  height={44}
+                  decoding="async"
+                  className="w-full h-full object-cover scale-[1.04] rounded-full select-none"
+                />
               </div>
               <div className="flex flex-col text-right min-w-0">
                 <span className="font-latin font-extrabold text-[13px] xs:text-sm sm:text-base tracking-tight text-slate-900 dark:text-white leading-tight truncate">
