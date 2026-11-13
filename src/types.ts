@@ -13,7 +13,8 @@ export type ProjectIconName =
   | 'camera'
   | 'image'
   | 'app-window'
-  | 'store';
+  | 'store'
+  | 'atom';
 
 export interface Project {
   id: string;

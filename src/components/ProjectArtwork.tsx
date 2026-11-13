@@ -11,6 +11,7 @@ import {
   Image as ImageIcon,
   Maximize2 as AppWindow,
   Store,
+  Atom,
   ExternalLink,
 } from 'lucide-react';
 import { Project, ProjectIconName } from '../types';
@@ -39,6 +40,8 @@ export const renderProjectIcon = (icon: ProjectIconName, className = 'w-6 h-6') 
       return <AppWindow className={className} />;
     case 'store':
       return <Store className={className} />;
+    case 'atom':
+      return <Atom className={className} />;
     default:
       return <ExternalLink className={className} />;
   }
@@ -94,6 +97,43 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
                   strokeWidth="1.5"
                 />
               ))}
+            </svg>
+          );
+
+        case 'physics-smart':
+          return (
+            <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
+              <ellipse
+                cx="180"
+                cy="80"
+                rx="88"
+                ry="30"
+                transform="rotate(-24 180 80)"
+                stroke="rgba(56,189,248,0.55)"
+                strokeWidth="2"
+              />
+              <ellipse
+                cx="180"
+                cy="80"
+                rx="88"
+                ry="30"
+                transform="rotate(24 180 80)"
+                stroke="rgba(129,140,248,0.55)"
+                strokeWidth="2"
+              />
+              <ellipse
+                cx="180"
+                cy="80"
+                rx="88"
+                ry="30"
+                transform="rotate(90 180 80)"
+                stroke="rgba(34,211,238,0.35)"
+                strokeWidth="1.5"
+                strokeDasharray="4 4"
+              />
+              <circle cx="110" cy="48" r="5" fill="#38bdf8" />
+              <circle cx="250" cy="112" r="5" fill="#818cf8" />
+              <circle cx="236" cy="44" r="4" fill="#22d3ee" />
             </svg>
           );
 

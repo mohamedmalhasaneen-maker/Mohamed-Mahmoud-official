@@ -88,6 +88,32 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: 'physics-smart',
+    title: 'منصة الفيزياء الذكية - Physics Smart',
+    description:
+      'منصة تعليمية تفاعلية متكاملة للفيزياء لطلاب الثانوية العامة المصرية والبكالوريا المصرية والدبلومة الأمريكية — دروس تفصيلية، معمل افتراضي، مدرس ذكي، وحل مسائل.',
+    url: 'https://physics-smart.vercel.app/',
+    category: 'فيزياء • منصة تعليمية ذكية',
+    filterGroup: 'educational',
+    techStack: ['React', 'TypeScript', 'Virtual Lab', 'AI Tutor'],
+    highlights: [
+      'محتوى تعليمي متكامل لطلاب الثانوية العامة المصرية والبكالوريا والدبلومة الأمريكية',
+      'معمل افتراضي تفاعلي ودروس تفصيلية لتجربة وفهم القوانين الفيزيائية عملياً',
+      'مدرس ذكي مدعوم بالذكاء الاصطناعي للمساعدة في حل المسائل خطوة بخطوة',
+    ],
+    icon: 'atom',
+    color: {
+      badgeBg: 'bg-sky-500/10',
+      badgeBorder: 'border-sky-500/25',
+      badgeText: 'text-sky-400',
+      hoverBg: 'group-hover:bg-sky-600',
+      hoverText: 'group-hover:text-white',
+      glow: 'rgba(14, 165, 233, 0.28)',
+      accentHex: '#0284c7',
+      secondaryHex: '#6366f1',
+    },
+  },
+  {
     id: 'rafeeq',
     title: 'رفيق الثانوية العامة',
     description:
