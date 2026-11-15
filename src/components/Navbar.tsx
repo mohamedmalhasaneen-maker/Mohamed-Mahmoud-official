@@ -3,6 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, MessageCircle, ChevronLeft } from 'lucide-react';
 import { ThemeMode } from '../types';
 import { scrollToElementById } from '../utils/scroll';
+import { PWAInstallButton } from './PWAInstallButton';
 
 export type SectionId = 'home' | 'projects' | 'contact';
 
@@ -169,8 +170,10 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
               })}
             </div>
 
-            {/* Right Controls: Theme Toggle (44x44) + WhatsApp + Mobile Menu Toggle (44x44) */}
+            {/* Right Controls: Install App + Theme Toggle (44x44) + WhatsApp + Mobile Menu Toggle (44x44) */}
             <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <PWAInstallButton variant="navbar" />
+
               <button
                 type="button"
                 id="theme-toggle-btn"
@@ -262,7 +265,11 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
                     );
                   })}
 
-                  <div className="mt-2 pt-2 border-t border-slate-200/80 dark:border-white/10">
+                  <div className="mt-2 pt-2 border-t border-slate-200/80 dark:border-white/10 flex flex-col gap-2">
+                    <PWAInstallButton
+                      variant="mobile"
+                      onActionComplete={() => setMobileMenuOpen(false)}
+                    />
                     <a
                       href={whatsappUrl}
                       target="_blank"

@@ -1,0 +1,326 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-11-15T19:19:14.039Z",
+  "profile": {
+    "studioName": "Mohamed Mahmoud Studio",
+    "developerName": "Mohamed Mahmoud",
+    "roleTitle": "المطور / Mohamed Mahmoud",
+    "bio": "مطور تطبيقات ومواقع إلكترونية | تقديم حلول برمجية ذكية وواجهات مستخدم حديثة",
+    "typingRoles": [
+      "مطور ومصمم مواقع وتطبيقات الويب التفاعلية",
+      "بناء المتاجر الإلكترونية والمنصات التعليمية الحديثة",
+      "تطوير الحلول البرمجية الذكية وأدوات الأعمال",
+      "تصميم واجهات مستخدم عصرية سريعة ومتجاوبة"
+    ],
+    "phone": "01031498281",
+    "whatsappUrl": "https://wa.me/201031498281",
+    "telegramUrl": "https://t.me/+201031498281",
+    "facebookUrl": "https://www.facebook.com/mohamed.mahmoud.533503/?locale=ar_AR",
+    "instagramUrl": "https://www.instagram.com/eng_mohamed662010/",
+    "tiktokUrl": "https://www.tiktok.com/@eng_mahamed6",
+    "email": "mohamed.m.alhasaneen@gmail.com",
+    "photoUrl": "/profile.jpg"
+  },
+  "projects": [
+    {
+      "id": "radwa-drawings",
+      "title": "تطبيق رسومات رضوى - Radwa Drawings",
+      "description": "تطبيق وتجربة فنية إبداعية لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.",
+      "url": "https://radwa-drawings.ai.studio/",
+      "category": "رسم وفنون • تطبيق تفاعلي",
+      "filterGroup": "educational",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Interactive Canvas"
+      ],
+      "highlights": [
+        "مساحة رسم رقمية تفاعلية سلسة ومتجاوبة مع اللمس والماوس",
+        "معرض منظم لاستعراض اللوحات والأعمال الفنية الرقمية بوضوح عالٍ",
+        "واجهة إبداعية مريحة وسريعة الاستخدام على الهواتف والأجهزة اللوحية"
+      ],
+      "icon": "palette",
+      "color": {
+        "badgeBg": "bg-purple-500/10",
+        "badgeBorder": "border-purple-500/25",
+        "badgeText": "text-purple-400",
+        "hoverBg": "group-hover:bg-purple-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(168, 85, 247, 0.28)",
+        "accentHex": "#9333ea",
+        "secondaryHex": "#38bdf8"
+      }
+    },
+    {
+      "id": "ms-nada-bio",
+      "title": "أطلس الأحياء التفاعلي 3D - Ms. Nada Bio",
+      "description": "أطلس تشريحي تفاعلي ثلاثي الأبعاد لطلاب الثانوية العامة: استكشاف الهيكل العظمي، الجهاز العضلي، والجهاز العصبي بمجسمات واقعية دقيقة.",
+      "url": "https://ms-nada-bio.vercel.app/",
+      "category": "أحياء • أطلس تفاعلي 3D",
+      "filterGroup": "educational",
+      "techStack": [
+        "React",
+        "3D Web Graphics",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "استكشاف تفاعلي ثلاثي الأبعاد للهيكل العظمي والجهاز العضلي والجهاز العصبي",
+        "مصمم خصيصاً لطلاب الثانوية العامة لتبسيط التشريح بمجسمات واقعية دقيقة",
+        "تحكم سلس في الدوران والتكبير مع شروحات علمية واضحة باللغة العربية"
+      ],
+      "icon": "dna",
+      "color": {
+        "badgeBg": "bg-teal-500/10",
+        "badgeBorder": "border-teal-500/25",
+        "badgeText": "text-teal-400",
+        "hoverBg": "group-hover:bg-teal-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(20, 184, 166, 0.28)",
+        "accentHex": "#0d9488",
+        "secondaryHex": "#06b6d4"
+      }
+    },
+    {
+      "id": "physics-smart",
+      "title": "منصة الفيزياء الذكية - Physics Smart",
+      "description": "منصة تعليمية تفاعلية متكاملة للفيزياء لطلاب الثانوية العامة المصرية والبكالوريا المصرية والدبلومة الأمريكية — دروس تفصيلية، معمل افتراضي، مدرس ذكي، وحل مسائل.",
+      "url": "https://physics-smart.vercel.app/",
+      "category": "فيزياء • منصة تعليمية ذكية",
+      "filterGroup": "educational",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Virtual Lab",
+        "AI Tutor"
+      ],
+      "highlights": [
+        "محتوى تعليمي متكامل لطلاب الثانوية العامة المصرية والبكالوريا والدبلومة الأمريكية",
+        "معمل افتراضي تفاعلي ودروس تفصيلية لتجربة وفهم القوانين الفيزيائية عملياً",
+        "مدرس ذكي مدعوم بالذكاء الاصطناعي للمساعدة في حل المسائل خطوة بخطوة"
+      ],
+      "icon": "atom",
+      "color": {
+        "badgeBg": "bg-sky-500/10",
+        "badgeBorder": "border-sky-500/25",
+        "badgeText": "text-sky-400",
+        "hoverBg": "group-hover:bg-sky-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(14, 165, 233, 0.28)",
+        "accentHex": "#0284c7",
+        "secondaryHex": "#6366f1"
+      }
+    },
+    {
+      "id": "rafeeq",
+      "title": "رفيق الثانوية العامة",
+      "description": "منصة ذكية مدعومة بالذكاء الاصطناعي لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.",
+      "url": "https://rafeeqsmart.ai.studio/",
+      "category": "ذكاء اصطناعي • تعليم",
+      "filterGroup": "educational",
+      "techStack": [
+        "React",
+        "AI Integration",
+        "TypeScript",
+        "Modern UI"
+      ],
+      "highlights": [
+        "مساعد ذكي يدعم طلاب الثانوية العامة في تنظيم جدول المذاكرة والمتابعة",
+        "تبسيط المفاهيم الدراسية وتقديم تجربة تعلم تفاعلية مخصصة للطالب",
+        "واجهة عربية عصرية تركز على الهدوء البصري وسهولة الوصول للأدوات"
+      ],
+      "icon": "graduation-cap",
+      "color": {
+        "badgeBg": "bg-indigo-500/10",
+        "badgeBorder": "border-indigo-500/25",
+        "badgeText": "text-indigo-400",
+        "hoverBg": "group-hover:bg-indigo-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(99, 102, 241, 0.28)",
+        "accentHex": "#4f46e5",
+        "secondaryHex": "#8b5cf6"
+      }
+    },
+    {
+      "id": "chemical",
+      "title": "التفاعلات الكيميائية",
+      "description": "موقع تفاعلي مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.",
+      "url": "https://chemical-reactions.vercel.app/",
+      "category": "محاكاة تفاعلية • كيمياء",
+      "filterGroup": "educational",
+      "techStack": [
+        "React",
+        "Interactive Simulation",
+        "Tailwind CSS",
+        "Vercel"
+      ],
+      "highlights": [
+        "محاكاة بصرية تفاعلية للتفاعلات والمعادلات الكيميائية خطوة بخطوة",
+        "تحويل المفاهيم الكيميائية المجردة إلى تجربة مرئية ممتعة وسهلة الفهم",
+        "تصميم متجاوب بالكامل يتيح للطلاب التجربة من الهاتف أو الكمبيوتر"
+      ],
+      "icon": "flask",
+      "color": {
+        "badgeBg": "bg-emerald-500/10",
+        "badgeBorder": "border-emerald-500/25",
+        "badgeText": "text-emerald-400",
+        "hoverBg": "group-hover:bg-emerald-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(16, 185, 129, 0.28)",
+        "accentHex": "#059669",
+        "secondaryHex": "#22d3ee"
+      }
+    },
+    {
+      "id": "elmekawy-home",
+      "title": "شركة المكاوي هوم - الموقع الرسمي",
+      "description": "المنصة الرسمية لاستعراض منتجات وخدمات شركة المكاوي هوم والديكورات الحديثة.",
+      "url": "https://almekawy-home-official.vercel.app/",
+      "category": "موقع تعريفي • ديكورات",
+      "filterGroup": "corporate",
+      "techStack": [
+        "React",
+        "Tailwind CSS",
+        "Responsive UI",
+        "Vercel"
+      ],
+      "highlights": [
+        "واجهة رسمية تعكس هوية شركة المكاوي هوم ومنتجات الديكورات الحديثة",
+        "عرض منظم للخدمات والأقسام مع تجربة تصفح سريعة على جميع الشاشات",
+        "ربط مباشر بوسائل التواصل لتسهيل استفسارات وطلبات العملاء"
+      ],
+      "icon": "home",
+      "color": {
+        "badgeBg": "bg-amber-500/10",
+        "badgeBorder": "border-amber-500/25",
+        "badgeText": "text-amber-400",
+        "hoverBg": "group-hover:bg-amber-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(245, 158, 11, 0.28)",
+        "accentHex": "#d97706",
+        "secondaryHex": "#3b82f6"
+      }
+    },
+    {
+      "id": "elmekawy-quotes",
+      "title": "المكاوي هوم - عروض الأسعار",
+      "description": "أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.",
+      "url": "https://al-mekawy-home.vercel.app/",
+      "category": "أداة مالية • حساب تكاليف",
+      "filterGroup": "commerce-tools",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Business Logic",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "حساب فوري ودقيق لتكاليف وعروض الأسعار وفق المقاسات والمواصفات",
+        "تقليل الوقت والجهد في إعداد المقايسات المالية لعملاء الشركة",
+        "واجهة واضحة ومنظمة لإدخال البيانات ومراجعة تفاصيل العرض المالي"
+      ],
+      "icon": "calculator",
+      "color": {
+        "badgeBg": "bg-rose-500/10",
+        "badgeBorder": "border-rose-500/25",
+        "badgeText": "text-rose-400",
+        "hoverBg": "group-hover:bg-rose-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(244, 63, 94, 0.28)",
+        "accentHex": "#e11d48",
+        "secondaryHex": "#8b5cf6"
+      }
+    },
+    {
+      "id": "elmekawy-upvc-photos",
+      "title": "المكاوي هوم - معرض صور UPVC",
+      "description": "معرض صور رقمي وتخزين سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك والبلكونات.",
+      "url": "https://al-mekawy-home-upvc-photo.vercel.app/",
+      "category": "معرض صور • منتجات UPVC",
+      "filterGroup": "corporate",
+      "techStack": [
+        "React",
+        "Cloud Media Gallery",
+        "Tailwind CSS",
+        "Vercel"
+      ],
+      "highlights": [
+        "معرض رقمي منظم لمنتجات قطاعات UPVC والأبواب والشبابيك والبلكونات",
+        "تصفح بصري سريع مع معاينة واضحة لتفاصيل التشطيب والتنفيذ الواقعي",
+        "بنية سحابية مرنة تسهل استعراض الأعمال أمام العملاء من أي جهاز"
+      ],
+      "icon": "camera",
+      "color": {
+        "badgeBg": "bg-cyan-500/10",
+        "badgeBorder": "border-cyan-500/25",
+        "badgeText": "text-cyan-400",
+        "hoverBg": "group-hover:bg-cyan-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(6, 182, 212, 0.28)",
+        "accentHex": "#0891b2",
+        "secondaryHex": "#2563eb"
+      }
+    },
+    {
+      "id": "the-best-windows",
+      "title": "ذا بيست ويندوز - شبابيك وأبواب UPVC",
+      "description": "الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر.",
+      "url": "https://the-best-windows.vercel.app/",
+      "category": "موقع تعريفي • أبواب وشبابيك UPVC",
+      "filterGroup": "corporate",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "SEO Ready"
+      ],
+      "highlights": [
+        "الموقع التعريفي الرسمي لشركة The Best Windows لقطاعات UPVC في مصر",
+        "إبراز مزايا العزل والجودة وتشكيلات الأبواب والشبابيك بتصميم عصري",
+        "تجربة مستخدم متكاملة تدعم الوصول السريع لطلب المعاينة والتواصل"
+      ],
+      "icon": "app-window",
+      "color": {
+        "badgeBg": "bg-blue-500/10",
+        "badgeBorder": "border-blue-500/25",
+        "badgeText": "text-blue-400",
+        "hoverBg": "group-hover:bg-blue-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(59, 130, 246, 0.28)",
+        "accentHex": "#2563eb",
+        "secondaryHex": "#06b6d4"
+      }
+    },
+    {
+      "id": "elmahlawy-store",
+      "title": "المحلاوي ستور - متجر إلكتروني",
+      "description": "متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب.",
+      "url": "https://elmahlawy-store.vercel.app/",
+      "category": "متجر إلكتروني • تسوق",
+      "filterGroup": "commerce-tools",
+      "techStack": [
+        "React",
+        "E-Commerce UI",
+        "WhatsApp Checkout",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "كتالوج منتجات إلكتروني يعرض الصور والمواصفات والأسعار بوضوح تام",
+        "تجربة تسوق سلسة مع إمكانية الطلب المباشر والسريع عبر واتساب",
+        "تصميم Mobile-First مهيأ لسرعة التصفح والشراء من الهواتف الذكية"
+      ],
+      "icon": "store",
+      "color": {
+        "badgeBg": "bg-orange-500/10",
+        "badgeBorder": "border-orange-500/25",
+        "badgeText": "text-orange-400",
+        "hoverBg": "group-hover:bg-orange-600",
+        "hoverText": "group-hover:text-white",
+        "glow": "rgba(249, 115, 22, 0.28)",
+        "accentHex": "#ea580c",
+        "secondaryHex": "#7c3aed"
+      }
+    }
+  ]
+}
