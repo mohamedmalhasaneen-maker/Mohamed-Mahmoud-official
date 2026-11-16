@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, lazy, Suspense } from 'react';
+import { useState, useCallback, lazy, Suspense } from 'react';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import {
   PROFILE_DATA,
@@ -24,10 +24,8 @@ export default function App() {
   const { theme, toggleTheme } = useTheme();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterGroup>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [blockedExternalUrl, setBlockedExternalUrl] = useState<string | null>(null);
 
   const {
-    isOnline,
     indicatorState,
     needRefresh,
     offlineReady,
@@ -40,55 +38,6 @@ export default function App() {
 
   const handleCloseModal = useCallback(() => {
     setSelectedProject(null);
-  }, []);
-
-  const handleCloseBlockedExternalUrl = useCallback(() => {
-    setBlockedExternalUrl(null);
-  }, []);
-
-  // Close offline external-link dialog automatically once connection returns
-  useEffect(() => {
-    if (isOnline && blockedExternalUrl) {
-      setBlockedExternalUrl(null);
-    }
-  }, [isOnline, blockedExternalUrl]);
-
-  // Guard external website links when offline so browser never displays a network error page
-  useEffect(() => {
-    const handleDocumentClick = (e: MouseEvent) => {
-      if (navigator.onLine) return;
-
-      const target = e.target as HTMLElement | null;
-      const anchor = target?.closest('a[href]') as HTMLAnchorElement | null;
-      if (!anchor) return;
-
-      const rawHref = anchor.getAttribute('href');
-      if (
-        !rawHref ||
-        rawHref.startsWith('#') ||
-        rawHref.startsWith('tel:') ||
-        rawHref.startsWith('mailto:')
-      ) {
-        return;
-      }
-
-      try {
-        const parsed = new URL(rawHref, window.location.origin);
-        if (
-          (parsed.protocol === 'http:' || parsed.protocol === 'https:') &&
-          parsed.origin !== window.location.origin
-        ) {
-          e.preventDefault();
-          e.stopPropagation();
-          setBlockedExternalUrl(parsed.href);
-        }
-      } catch {
-        // Ignore malformed URLs
-      }
-    };
-
-    document.addEventListener('click', handleDocumentClick, true);
-    return () => document.removeEventListener('click', handleDocumentClick, true);
   }, []);
 
   return (
@@ -143,16 +92,14 @@ export default function App() {
           {/* Floating Back-To-Top Button */}
           <BackToTop />
 
-          {/* PWA Connectivity Indicator, Update Prompt & Offline External Link Notice */}
+          {/* PWA Connectivity Indicator & Update Prompt */}
           <PWAStatusBanner
             indicatorState={indicatorState}
             needRefresh={needRefresh}
             offlineReady={offlineReady}
-            blockedExternalUrl={blockedExternalUrl}
             onApplyUpdate={applyUpdate}
             onDismissUpdate={dismissUpdate}
             onDismissOfflineReady={dismissOfflineReady}
-            onCloseBlockedExternalUrl={handleCloseBlockedExternalUrl}
           />
         </div>
       </LazyMotion>
