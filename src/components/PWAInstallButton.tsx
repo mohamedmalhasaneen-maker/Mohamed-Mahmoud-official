@@ -35,7 +35,7 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = React.memo(
           onClick={handleClick}
           aria-label="تثبيت التطبيق"
           title="تثبيت تطبيق Mohamed Mahmoud Studio"
-          className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-blue-600 via-violet-600 to-cyan-500 hover:brightness-110 text-white shadow-[0_10px_28px_-5px_rgba(37,99,235,0.55)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer relative group shrink-0"
+          className="w-[54px] h-[54px] rounded-full bg-gradient-to-br from-blue-600 via-violet-600 to-cyan-500 hover:brightness-110 text-white shadow-[0_10px_28px_-5px_rgba(37,99,235,0.55)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer relative group shrink-0"
         >
           <Download className="w-6 h-6 shrink-0" />
           <span className="absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/95 dark:bg-[#0b1328] border border-white/15 text-white text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">

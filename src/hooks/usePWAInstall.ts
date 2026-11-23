@@ -15,9 +15,12 @@ export function usePWAInstall() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // Only consider installed if truly standalone and not inside preview iframe
+    const isInIframe = window.self !== window.top;
     const standaloneMatch =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+      !isInIframe &&
+      (window.matchMedia('(display-mode: standalone)').matches ||
+        (window.navigator as unknown as { standalone?: boolean }).standalone === true);
     setIsInstalled(standaloneMatch);
 
     const ua = window.navigator.userAgent.toLowerCase();
@@ -37,22 +40,12 @@ export function usePWAInstall() {
       setDeferredPrompt(null);
     };
 
-    const mediaQuery = window.matchMedia('(display-mode: standalone)');
-    const handleDisplayModeChange = (e: MediaQueryListEvent) => {
-      if (e.matches) {
-        setIsInstalled(true);
-        setDeferredPrompt(null);
-      }
-    };
-
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     window.addEventListener('appinstalled', handleAppInstalled);
-    mediaQuery.addEventListener('change', handleDisplayModeChange);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('appinstalled', handleAppInstalled);
-      mediaQuery.removeEventListener('change', handleDisplayModeChange);
     };
   }, []);
 

@@ -129,9 +129,16 @@ export default function App() {
           {/* Floating Back-To-Top Button */}
           <BackToTop />
 
-          {/* Floating Action Buttons (PWA Install & WhatsApp Stacked) */}
-          <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 flex flex-col items-center gap-3">
-            <PWAInstallButton variant="floating-mobile" />
+          {/* Floating Actions Container (Install App Above WhatsApp) */}
+          <div
+            className="fixed z-[99999] flex flex-col items-center"
+            style={{
+              right: '20px',
+              bottom: 'calc(25px + env(safe-area-inset-bottom))',
+              gap: '18px',
+            }}
+          >
+            <PWAInstallButton />
             <FloatingWhatsAppButton
               whatsappUrl={profile.whatsappUrl || 'https://wa.me/201031498281'}
             />
