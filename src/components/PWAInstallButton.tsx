@@ -48,10 +48,10 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = React.memo(
             onClick={handleClick}
             aria-label="تثبيت التطبيق"
             title="تثبيت تطبيق Mohamed Mahmoud Studio"
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 active:scale-95 dark:bg-white/[0.06] dark:hover:bg-blue-600 border border-slate-200/80 dark:border-white/10 hover:border-blue-500 text-slate-700 dark:text-cyan-300 hover:text-white text-xs sm:text-sm font-bold transition-all cursor-pointer"
+            className="min-h-[42px] sm:min-h-[44px] min-w-[42px] sm:min-w-[44px] inline-flex items-center justify-center gap-2 px-3 sm:px-3.5 py-2 rounded-2xl bg-white/80 hover:bg-white dark:bg-white/[0.06] dark:hover:bg-white/[0.12] backdrop-blur-xl border border-slate-200/90 dark:border-white/14 hover:border-blue-500/60 dark:hover:border-cyan-400/55 hover:-translate-y-0.5 hover:shadow-[0_10px_26px_-8px_rgba(37,99,235,0.38)] active:scale-95 text-slate-700 dark:text-cyan-300 hover:text-blue-600 dark:hover:text-cyan-200 text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shrink-0"
           >
             <Download className="w-4 h-4 shrink-0" />
-            <span className="hidden lg:inline">تثبيت التطبيق</span>
+            <span className="hidden lg:inline whitespace-nowrap">تثبيت التطبيق</span>
           </button>
         )}
 

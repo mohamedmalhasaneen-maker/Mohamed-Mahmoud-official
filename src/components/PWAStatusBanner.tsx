@@ -24,7 +24,7 @@ export const PWAStatusBanner: React.FC<PWAStatusBannerProps> = React.memo(
     return (
       <div
         aria-live="polite"
-        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 flex flex-col items-start gap-2 max-w-[calc(100vw-5.5rem)] sm:max-w-sm pointer-events-none"
+        className="fixed bottom-[calc(max(1.25rem,env(safe-area-inset-bottom))+4.35rem)] right-4 sm:right-6 z-40 flex flex-col items-start gap-2 max-w-[calc(100vw-2rem)] sm:max-w-sm pointer-events-none"
       >
         {/* Connectivity Indicator: Offline (Red), Syncing (Spin), Online Reconnected (Green, auto-hides) */}
         <AnimatePresence>

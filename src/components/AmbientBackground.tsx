@@ -23,7 +23,7 @@ export const AmbientBackground: React.FC = React.memo(() => {
       currentY += dy * 0.14;
 
       if (glowRef.current) {
-        glowRef.current.style.transform = `translate3d(${currentX - 240}px, ${currentY - 240}px, 0)`;
+        glowRef.current.style.transform = `translate3d(${currentX - 280}px, ${currentY - 280}px, 0)`;
       }
 
       if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
@@ -55,57 +55,42 @@ export const AmbientBackground: React.FC = React.memo(() => {
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
     >
-      {/* Pre-softened Radial Atmospheric Lighting (Zero CSS filter:blur() GPU Overhead!) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-8%,rgba(37,99,235,0.14),rgba(124,58,237,0.06)_48%,transparent_82%)] dark:bg-[radial-gradient(ellipse_90%_55%_at_50%_-8%,rgba(37,99,235,0.26),rgba(124,58,237,0.14)_48%,transparent_82%)]" />
+      {/* Top Studio Volumetric Lighting (Calm & Non-Competing) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_95%_55%_at_50%_-10%,rgba(37,99,235,0.08),rgba(124,58,237,0.04)_48%,transparent_84%)] dark:bg-[radial-gradient(ellipse_95%_55%_at_50%_-10%,rgba(37,99,235,0.16),rgba(124,58,237,0.09)_48%,transparent_84%)]" />
 
-      {/* Electric Blue, Violet & Cyan Soft Radial Orbs — No Blur Filter Required */}
+      {/* Electric Blue, Royal Violet & Luminous Cyan Soft Ambient Washes */}
       <div
-        className="absolute -top-36 -right-32 w-[28rem] h-[28rem] opacity-80 dark:opacity-100 animate-float-desktop"
+        className="absolute -top-36 -right-32 w-[28rem] h-[28rem] opacity-45 dark:opacity-60 animate-float-desktop"
         style={{
           background:
-            'radial-gradient(circle, rgba(37, 99, 235, 0.20) 0%, rgba(37, 99, 235, 0.06) 42%, transparent 70%)',
+            'radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, rgba(37, 99, 235, 0.03) 44%, transparent 72%)',
         }}
       />
       <div
-        className="absolute top-[30%] -left-36 w-[26rem] h-[26rem] opacity-75 dark:opacity-100"
+        className="absolute top-[28%] -left-36 w-[26rem] h-[26rem] opacity-40 dark:opacity-55"
         style={{
           background:
-            'radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(124, 58, 237, 0.05) 44%, transparent 70%)',
+            'radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(124, 58, 237, 0.03) 46%, transparent 72%)',
         }}
       />
       <div
-        className="hidden sm:block absolute -bottom-36 right-[14%] w-[26rem] h-[26rem] opacity-75 dark:opacity-100 animate-float-desktop"
+        className="hidden sm:block absolute -bottom-36 right-[14%] w-[26rem] h-[26rem] opacity-40 dark:opacity-55 animate-float-desktop"
         style={{
           background:
-            'radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(6, 182, 212, 0.04) 44%, transparent 70%)',
+            'radial-gradient(circle, rgba(6, 182, 212, 0.11) 0%, rgba(6, 182, 212, 0.025) 45%, transparent 72%)',
         }}
       />
 
-      {/* Subtle Architectural Grid */}
-      <div className="absolute inset-0 studio-grid-pattern [mask-image:radial-gradient(ellipse_80%_60%_at_50%_25%,#000_30%,transparent_100%)]" />
+      {/* Subtle Architectural Perspective Grid */}
+      <div className="absolute inset-0 studio-grid-pattern opacity-65 [mask-image:radial-gradient(ellipse_85%_65%_at_50%_22%,#000_22%,transparent_100%)]" />
 
-      {/* Lightweight Desktop Geometric Accents */}
-      <svg
-        className="hidden lg:block absolute top-28 left-[7%] w-32 h-32 text-blue-500/15 dark:text-cyan-400/15 animate-spin-desktop"
-        viewBox="0 0 120 120"
-        fill="none"
-      >
-        <polygon
-          points="60,6 108,33 108,87 60,114 12,87 12,33"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeDasharray="6 6"
-        />
-        <circle cx="60" cy="60" r="34" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-      </svg>
-
-      {/* Idle-Sleeping Desktop Cursor Glow */}
+      {/* Subtle Cursor Ambient Halo (Desktop Fine Pointer Only) */}
       <div
         ref={glowRef}
-        className="hidden lg:block fixed top-0 left-0 w-[480px] h-[480px] rounded-full opacity-70 dark:opacity-100 will-change-transform"
+        className="hidden lg:block fixed top-0 left-0 w-[520px] h-[520px] rounded-full opacity-55 dark:opacity-75 will-change-transform"
         style={{
           background:
-            'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(124, 58, 237, 0.045) 38%, transparent 68%)',
+            'radial-gradient(circle, rgba(56, 189, 248, 0.055) 0%, rgba(124, 58, 237, 0.03) 40%, transparent 70%)',
         }}
       />
     </div>

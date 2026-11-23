@@ -15,7 +15,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 5.25rem;
     overflow-x: clip;
     max-width: 100%;
     -webkit-text-size-adjust: 100%;
@@ -65,11 +65,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: rgba(148, 163, 184, 0.12);
+    background: rgba(148, 163, 184, 0.14);
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: #060b18;
+    background: #050a17;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -82,7 +82,7 @@
   }
 }
 
-/* Signature Gradient Text & Surfaces */
+/* Signature Electric Blue / Violet / Cyan Gradient Text & Surfaces */
 .text-studio-gradient {
   background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #06b6d4 100%);
   -webkit-background-clip: text;
@@ -108,11 +108,32 @@
   }
 }
 
-/* Interactive Spotlight Surface — Desktop Mouse Only (Prevents Sticky Hover on Touch) */
+/* 3D Perspective & Depth Layer Utilities */
+.perspective-stage {
+  perspective: 1300px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.depth-layer-1 {
+  transform: translateZ(18px);
+}
+
+.depth-layer-2 {
+  transform: translateZ(34px);
+}
+
+.depth-layer-3 {
+  transform: translateZ(52px);
+}
+
+/* Interactive Spotlight & Rim-Lighting Card */
 .spotlight-card {
   --mouse-x: 50%;
   --mouse-y: 50%;
-  --spotlight-color: rgba(56, 189, 248, 0.14);
+  --spotlight-color: rgba(56, 189, 248, 0.16);
   position: relative;
 }
 
@@ -123,14 +144,14 @@
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(
-      380px circle at var(--mouse-x) var(--mouse-y),
+      420px circle at var(--mouse-x) var(--mouse-y),
       var(--spotlight-color),
-      transparent 65%
+      transparent 64%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.28s ease;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
 
   .spotlight-card:hover::before {
@@ -138,37 +159,60 @@
   }
 }
 
-/* Touch-Safe Card Elevation */
+/* Touch-Safe Interactive Card Elevation */
 .touch-card-interactive {
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .touch-card-interactive:active {
-  transform: scale(0.988);
+  transform: scale(0.986);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .touch-card-interactive:hover {
-    transform: translate3d(0, -5px, 0);
-  }
-}
-
-/* Subtle Architectural Grid Pattern */
+/* Subtle Architectural Perspective Grid */
 .studio-grid-pattern {
-  background-size: 44px 44px;
+  background-size: 48px 48px;
   background-image:
-    linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
 }
 
 .dark .studio-grid-pattern {
-  background-size: 44px 44px;
+  background-size: 48px 48px;
   background-image:
-    linear-gradient(to right, rgba(56, 189, 248, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 92, 246, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.028) 1px, transparent 1px);
 }
 
-/* Compositor-Friendly Ambient Animations */
+/* Kinetic Marquee Ribbons (Seamless Dual-Track Loop) */
+@keyframes marqueeScrollRtl {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+@keyframes marqueeScrollLtr {
+  0% {
+    transform: translate3d(50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marqueeScrollRtl 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-ltr {
+  animation: marqueeScrollLtr 38s linear infinite;
+  will-change: transform;
+}
+
+/* Compositor-Friendly Ambient Keyframes */
 @keyframes studioGradientShift {
   0%, 100% {
     background-position: 0% 50%;
@@ -205,6 +249,24 @@
   }
 }
 
+@keyframes introRingOrbit {
+  from {
+    transform: rotateX(68deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(68deg) rotateZ(360deg);
+  }
+}
+
+@keyframes introRingOrbitReverse {
+  from {
+    transform: rotateX(72deg) rotateY(22deg) rotateZ(360deg);
+  }
+  to {
+    transform: rotateX(72deg) rotateY(22deg) rotateZ(0deg);
+  }
+}
+
 @media (min-width: 768px) {
   .animate-float-desktop {
     animation: floatSlow 10s ease-in-out infinite;
@@ -219,6 +281,50 @@
 
 .animate-caret {
   animation: caretBlink 1s infinite;
+}
+
+.animate-intro-orbit {
+  animation: introRingOrbit 9s linear infinite;
+}
+
+.animate-intro-orbit-reverse {
+  animation: introRingOrbitReverse 12s linear infinite;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.36);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.36);
+    opacity: 0;
+  }
+}
+
+.animate-whatsapp-pulse {
+  animation: whatsappPulse 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Hanging Pendant Pendulum Swing */
+@keyframes pendulumSwing {
+  0%, 100% {
+    transform: rotateZ(-2.2deg);
+  }
+  50% {
+    transform: rotateZ(2.2deg);
+  }
+}
+
+.animate-pendulum {
+  transform-origin: top center;
+  animation: pendulumSwing 6.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Respect Reduced Motion Preferences */

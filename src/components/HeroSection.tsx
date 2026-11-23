@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { m, useInView, useReducedMotion } from 'framer-motion';
 import {
-  Sparkles,
   MessageCircle,
   ArrowDown,
   FolderGit2,
 } from 'lucide-react';
 import { ProfileInfo } from '../types';
 import { scrollToElementById } from '../utils/scroll';
-import defaultDevPhoto from '../assets/developer-photo.jpg';
-import devPhoto480Webp from '../assets/developer-photo-480.webp';
-import devPhoto800Webp from '../assets/developer-photo-800.webp';
+import { Card3DTilt } from './Card3DTilt';
+import { MagneticWrapper } from './MagneticWrapper';
+import { Interactive3DPortrait } from './Interactive3DPortrait';
 
 interface HeroSectionProps {
   profile: ProfileInfo;
@@ -39,7 +38,7 @@ const AnimatedCounter: React.FC<CounterItemProps> = React.memo(
       }
 
       let startTimestamp: number | null = null;
-      const duration = 950;
+      const duration = 900;
 
       const step = (timestamp: number) => {
         if (!startTimestamp) startTimestamp = timestamp;
@@ -56,24 +55,31 @@ const AnimatedCounter: React.FC<CounterItemProps> = React.memo(
     }, [isInView, endValue, prefersReducedMotion]);
 
     return (
-      <div
-        ref={ref}
-        className="p-3.5 sm:p-5 rounded-2xl bg-white/95 dark:bg-[#0c1428]/90 md:bg-white/80 md:dark:bg-slate-900/60 md:backdrop-blur-xl border border-slate-200/85 dark:border-white/10 text-center sm:text-right"
+      <Card3DTilt
+        maxTiltDeg={5}
+        scaleOnHover={1.02}
+        spotlightColor="rgba(56, 189, 248, 0.2)"
+        className="p-4 sm:p-5 text-center sm:text-right hover:border-blue-400/50 dark:hover:border-cyan-400/40"
       >
         <div
-          className="font-latin text-2xl sm:text-3xl font-extrabold text-studio-gradient tabular-nums tracking-tight"
-          style={{ fontVariantNumeric: 'tabular-nums' }}
+          ref={ref}
+          className="preserve-3d"
         >
-          {count}
-          {suffix}
+          <div
+            className="font-latin text-2xl sm:text-4xl font-extrabold text-studio-gradient tabular-nums tracking-tight depth-layer-1"
+            style={{ fontVariantNumeric: 'tabular-nums' }}
+          >
+            {count}
+            {suffix}
+          </div>
+          <div className="mt-1.5 text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 leading-snug">
+            {label}
+          </div>
+          <div className="mt-0.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-snug">
+            {sublabel}
+          </div>
         </div>
-        <div className="mt-1 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 leading-snug">
-          {label}
-        </div>
-        <div className="mt-0.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-snug">
-          {sublabel}
-        </div>
-      </div>
+      </Card3DTilt>
     );
   }
 );
@@ -83,13 +89,7 @@ AnimatedCounter.displayName = 'AnimatedCounter';
 export const HeroSection: React.FC<HeroSectionProps> = React.memo(
   ({ profile, totalProjects }) => {
     const prefersReducedMotion = useReducedMotion();
-    const [photoSrc, setPhotoSrc] = useState<string>(
-      defaultDevPhoto || profile.photoUrl || '/profile.jpg'
-    );
-    const [useFallbackJpgOnly, setUseFallbackJpgOnly] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
 
-    // Accessible Typewriter Effect with Stable Container Height (Zero Mobile Layout Shift)
     const roles = profile.typingRoles;
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState(roles[0] || '');
@@ -126,31 +126,33 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
       <section
         id="home"
         aria-label="الواجهة الرئيسية"
-        className="relative pt-5 sm:pt-10 lg:pt-16 pb-10 sm:pb-16 overflow-hidden"
+        className="relative pt-6 sm:pt-12 lg:pt-16 pb-10 sm:pb-16 overflow-x-clip"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Main Hero Split Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 lg:gap-12 items-center">
-            {/* Right Column (RTL Primary Typography & CTAs) */}
+          {/* Main 3D Interactive Hero Split Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
+            {/* Primary Column: 3D Depth Typography & Magnetic CTAs */}
             <m.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-right order-2 lg:order-1"
             >
-              {/* Eyebrow Kicker */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-500/10 dark:bg-sky-500/10 border border-blue-500/20 dark:border-cyan-400/25 text-blue-700 dark:text-cyan-300 text-xs sm:text-sm font-bold mb-4">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-600 dark:text-cyan-400 shrink-0" />
-                <span>متاح لتطوير المشاريع البرمجية والحلول الذكية</span>
+              {/* Unboxed Clean Studio Kicker */}
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-bold text-blue-700 dark:text-cyan-300 mb-3 sm:mb-4">
+                <span aria-hidden="true" className="w-6 h-[2px] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+                <span>استوديو تطوير الويب والتجارب التفاعلية</span>
               </div>
 
               {/* Developer Name & Studio Heading */}
               <h1
                 id="studio-name"
-                className="font-latin text-[1.75rem] xs:text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]"
+                className="font-latin text-[1.9rem] xs:text-[2.15rem] sm:text-5xl lg:text-[3.55rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12] [text-wrap:balance]"
               >
-                <span className="block">{profile.developerName}</span>
-                <span className="block mt-1.5 sm:mt-2 text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-extrabold text-studio-gradient font-sans">
+                <span className="block drop-shadow-[0_6px_22px_rgba(37,99,235,0.16)] dark:drop-shadow-[0_8px_28px_rgba(56,189,248,0.28)]">
+                  {profile.developerName}
+                </span>
+                <span className="block mt-2 text-xl xs:text-2xl sm:text-3xl lg:text-4xl font-extrabold text-studio-gradient">
                   {profile.studioName}
                 </span>
               </h1>
@@ -158,12 +160,12 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
               {/* Role Subtitle */}
               <p
                 id="developer-title"
-                className="mt-3 text-sm sm:text-lg font-bold text-blue-600 dark:text-sky-400"
+                className="mt-3.5 text-sm sm:text-lg font-extrabold text-blue-700 dark:text-cyan-300"
               >
-                {profile.roleTitle}
+                {profile.roleTitle} · مطور مواقع وتطبيقات ويب
               </p>
 
-              {/* Fixed-Height Typing Specialty Line — Prevents Vertical Jumping on Narrow Phones */}
+              {/* Fixed-Height Typing Specialty Line */}
               <div
                 aria-live="polite"
                 className="mt-2.5 min-h-[3.25rem] sm:min-h-[2.5rem] flex items-center justify-center lg:justify-start px-1 sm:px-0"
@@ -185,112 +187,49 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
                 {profile.bio} — نصمم ونبرمج تجارب ويب عصرية تجمع بين قوة الأداء، جاذبية الهوية البصرية، وسلاسة الاستخدام على الهواتف وأجهزة الكمبيوتر.
               </p>
 
-              {/* Primary Interactive CTA Buttons (48px+ Touch Targets) */}
-              <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={() => scrollToElementById('projects')}
-                  className="min-h-[48px] px-6 sm:px-7 py-3.5 rounded-2xl bg-studio-gradient text-white font-bold text-sm sm:text-base shadow-[0_10px_26px_-8px_rgba(37,99,235,0.55)] active:scale-[0.98] transition-transform flex items-center justify-center gap-2.5 cursor-pointer"
-                >
-                  <FolderGit2 className="w-5 h-5 shrink-0" />
-                  <span>استكشف المشروعات ({totalProjects})</span>
-                </button>
+              {/* Magnetic 3D CTA Controls (48px+ Touch Targets) */}
+              <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+                <MagneticWrapper strength={0.22} className="w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => scrollToElementById('projects')}
+                    className="w-full sm:w-auto min-h-[48px] px-6 sm:px-7 py-3.5 rounded-2xl bg-studio-gradient text-white font-bold text-sm sm:text-base shadow-[0_14px_30px_-8px_rgba(37,99,235,0.55)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 whitespace-nowrap cursor-pointer"
+                  >
+                    <FolderGit2 className="w-5 h-5 shrink-0" />
+                    <span>استكشف المشروعات ({totalProjects})</span>
+                  </button>
+                </MagneticWrapper>
 
-                <a
-                  id="hero-whatsapp-btn"
-                  href={profile.whatsappUrl || 'https://wa.me/201031498281'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[48px] px-6 sm:px-7 py-3.5 rounded-2xl bg-white/95 dark:bg-slate-900/85 hover:bg-emerald-600 dark:hover:bg-emerald-600 active:scale-[0.98] text-slate-800 dark:text-slate-100 hover:text-white border border-slate-200 dark:border-emerald-500/35 hover:border-emerald-500 font-bold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center gap-2.5 group"
-                >
-                  <MessageCircle className="w-5 h-5 text-emerald-500 group-hover:text-white shrink-0 transition-colors" />
-                  <span>تواصل عبر واتساب</span>
-                </a>
+                <MagneticWrapper strength={0.2} className="w-full sm:w-auto">
+                  <a
+                    id="hero-whatsapp-btn"
+                    href={profile.whatsappUrl || 'https://wa.me/201031498281'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto min-h-[48px] px-6 sm:px-7 py-3.5 rounded-2xl bg-white dark:bg-[#0d1732] hover:bg-emerald-600 dark:hover:bg-emerald-600 active:scale-[0.98] text-slate-800 dark:text-slate-100 hover:text-white border border-slate-200 dark:border-emerald-500/40 hover:border-emerald-500 font-bold text-sm sm:text-base shadow-sm transition-all flex items-center justify-center gap-2.5 whitespace-nowrap group"
+                  >
+                    <MessageCircle className="w-5 h-5 text-emerald-500 group-hover:text-white shrink-0 transition-colors" />
+                    <span>تواصل عبر واتساب</span>
+                  </a>
+                </MagneticWrapper>
               </div>
             </m.div>
 
-            {/* Left Column (RTL Developer Portrait — WebP + Original JPG Fallback, Zero CLS 3:4 Box) */}
-            <m.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 flex justify-center order-1 lg:order-2 px-3"
-            >
-              <div className="relative w-full max-w-[205px] xs:max-w-[235px] sm:max-w-[290px] lg:max-w-[360px]">
-                {/* Pre-softened Radial Aura (Zero Blur Filter GPU Cost) */}
-                <div
-                  aria-hidden="true"
-                  className="absolute -inset-6 rounded-[2.25rem] opacity-85 dark:opacity-100 pointer-events-none"
-                  style={{
-                    background:
-                      'radial-gradient(circle, rgba(59,130,246,0.32) 0%, rgba(124,58,237,0.22) 45%, transparent 72%)',
-                  }}
-                />
-
-                {/* Safe-Bounded Geometric Corner Accents */}
-                <div
-                  aria-hidden="true"
-                  className="absolute -top-2 -right-2 w-12 h-12 sm:w-14 sm:h-14 rounded-tr-3xl border-t-2 border-r-2 border-cyan-400/75 pointer-events-none"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute -bottom-2 -left-2 w-12 h-12 sm:w-14 sm:h-14 rounded-bl-3xl border-b-2 border-l-2 border-violet-500/75 pointer-events-none"
-                />
-
-                {/* Gradient-Bordered Portrait Frame with Reserved 3:4 Aspect Ratio */}
-                <div
-                  id="developer-photo-wrapper"
-                  className="relative rounded-[1.5rem] sm:rounded-[1.75rem] p-[2px] bg-gradient-to-br from-blue-500 via-violet-500 to-cyan-400 shadow-[0_18px_44px_-12px_rgba(37,99,235,0.4)]"
-                >
-                  <div className="relative aspect-[3/4] w-full rounded-[calc(1.5rem-2px)] sm:rounded-[calc(1.75rem-2px)] overflow-hidden bg-slate-200 dark:bg-slate-900">
-                    {!imageLoaded && (
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
-                      />
-                    )}
-                    <picture>
-                      {!useFallbackJpgOnly && (
-                        <source
-                          type="image/webp"
-                          srcSet={`${devPhoto480Webp} 480w, ${devPhoto800Webp} 800w`}
-                          sizes="(max-width: 640px) 235px, (max-width: 1024px) 290px, 360px"
-                        />
-                      )}
-                      <img
-                        id="developer-photo-img"
-                        src={photoSrc}
-                        alt={profile.developerName}
-                        width={960}
-                        height={1280}
-                        fetchPriority="high"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                        onLoad={() => setImageLoaded(true)}
-                        onError={() => {
-                          setUseFallbackJpgOnly(true);
-                          if (photoSrc !== '/profile.jpg') {
-                            setPhotoSrc('/profile.jpg');
-                          }
-                        }}
-                        className={`w-full h-full object-cover object-top block select-none transition-opacity duration-300 ${
-                          imageLoaded ? 'opacity-100' : 'opacity-95'
-                        }`}
-                      />
-                    </picture>
-                  </div>
-                </div>
-              </div>
-            </m.div>
+            {/* Secondary Column: Interactive 3D Multi-Plane Portrait (Original Photo Intact!) */}
+            <Interactive3DPortrait
+              developerName={profile.developerName}
+              studioName={profile.studioName}
+              photoUrl={profile.photoUrl}
+            />
           </div>
 
-          {/* Real Portfolio Metrics Bar */}
+          {/* Real Portfolio Metrics Bar (4-Col Full-Width Row Below Split) */}
           <m.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45 }}
-            className="mt-10 sm:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5"
+            className="mt-10 sm:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 perspective-stage"
           >
             <AnimatedCounter
               endValue={totalProjects}
@@ -327,7 +266,7 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
               className="min-h-[44px] px-4 py-1.5 group inline-flex flex-col items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-300 active:scale-95 transition-all cursor-pointer"
             >
               <span>اكتشف المشروعات والأعمال</span>
-              <span className="w-9 h-9 rounded-full border border-slate-300 dark:border-white/15 flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-cyan-400 transition-colors">
+              <span className="w-9 h-9 rounded-full border border-slate-300 dark:border-cyan-400/30 flex items-center justify-center group-hover:border-blue-500 dark:group-hover:border-cyan-300 transition-colors shadow-sm">
                 <ArrowDown className="w-4 h-4" />
               </span>
             </button>

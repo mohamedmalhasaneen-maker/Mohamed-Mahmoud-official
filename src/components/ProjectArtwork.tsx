@@ -65,24 +65,24 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
       }
     })();
 
-    const heightClass = size === 'modal' ? 'h-44 sm:h-56' : 'h-42 sm:h-46';
+    const heightClass = size === 'modal' ? 'h-48 sm:h-60' : 'h-44 sm:h-48';
 
     const renderCustomScene = () => {
       switch (project.id) {
         case 'ms-nada-bio':
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <circle cx="180" cy="80" r="56" stroke="rgba(45,212,191,0.28)" strokeWidth="1.2" strokeDasharray="4 4" />
-              <circle cx="180" cy="80" r="38" stroke="rgba(34,211,238,0.38)" strokeWidth="1.2" />
+              <circle cx="180" cy="80" r="58" stroke="rgba(45,212,191,0.32)" strokeWidth="1.2" strokeDasharray="4 4" />
+              <circle cx="180" cy="80" r="38" stroke="rgba(34,211,238,0.44)" strokeWidth="1.2" />
               <path
                 d="M95 52 C 135 20, 225 140, 265 108"
-                stroke="rgba(45,212,191,0.75)"
+                stroke="rgba(45,212,191,0.8)"
                 strokeWidth="2.5"
                 strokeLinecap="round"
               />
               <path
                 d="M95 108 C 135 140, 225 20, 265 52"
-                stroke="rgba(56,189,248,0.75)"
+                stroke="rgba(56,189,248,0.8)"
                 strokeWidth="2.5"
                 strokeLinecap="round"
               />
@@ -93,7 +93,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
                   y1={56 + (idx % 2) * 10}
                   x2={x}
                   y2={104 - (idx % 2) * 10}
-                  stroke="rgba(255,255,255,0.32)"
+                  stroke="rgba(255,255,255,0.34)"
                   strokeWidth="1.5"
                 />
               ))}
@@ -109,7 +109,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
                 rx="88"
                 ry="30"
                 transform="rotate(-24 180 80)"
-                stroke="rgba(56,189,248,0.55)"
+                stroke="rgba(56,189,248,0.62)"
                 strokeWidth="2"
               />
               <ellipse
@@ -118,7 +118,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
                 rx="88"
                 ry="30"
                 transform="rotate(24 180 80)"
-                stroke="rgba(129,140,248,0.55)"
+                stroke="rgba(129,140,248,0.62)"
                 strokeWidth="2"
               />
               <ellipse
@@ -127,7 +127,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
                 rx="88"
                 ry="30"
                 transform="rotate(90 180 80)"
-                stroke="rgba(34,211,238,0.35)"
+                stroke="rgba(34,211,238,0.4)"
                 strokeWidth="1.5"
                 strokeDasharray="4 4"
               />
@@ -140,41 +140,41 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
         case 'radwa-drawings':
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <rect x="64" y="28" width="232" height="104" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(192,132,252,0.35)" />
+              <rect x="64" y="28" width="232" height="104" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(192,132,252,0.4)" />
               <path
                 d="M92 106 Q 140 38, 184 82 T 268 54"
                 stroke="#c084fc"
                 strokeWidth="4"
                 strokeLinecap="round"
               />
-              <circle cx="110" cy="54" r="9" fill="#c084fc" fillOpacity="0.7" />
-              <circle cx="136" cy="54" r="9" fill="#38bdf8" fillOpacity="0.7" />
-              <circle cx="162" cy="54" r="9" fill="#f472b6" fillOpacity="0.7" />
+              <circle cx="110" cy="54" r="9" fill="#c084fc" fillOpacity="0.75" />
+              <circle cx="136" cy="54" r="9" fill="#38bdf8" fillOpacity="0.75" />
+              <circle cx="162" cy="54" r="9" fill="#f472b6" fillOpacity="0.75" />
             </svg>
           );
 
         case 'rafeeq':
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <rect x="58" y="32" width="144" height="96" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(129,140,248,0.35)" />
-              <rect x="74" y="50" width="84" height="8" rx="4" fill="rgba(165,180,252,0.65)" />
-              <rect x="74" y="68" width="112" height="6" rx="3" fill="rgba(255,255,255,0.25)" />
-              <rect x="74" y="82" width="96" height="6" rx="3" fill="rgba(255,255,255,0.2)" />
-              <rect x="74" y="102" width="58" height="12" rx="6" fill="rgba(99,102,241,0.65)" />
-              <rect x="216" y="32" width="86" height="96" rx="12" fill="rgba(99,102,241,0.14)" stroke="rgba(167,139,250,0.35)" />
-              <circle cx="259" cy="68" r="18" stroke="rgba(165,180,252,0.8)" strokeWidth="3" />
-              <rect x="236" y="100" width="46" height="7" rx="3.5" fill="rgba(196,181,253,0.6)" />
+              <rect x="58" y="32" width="144" height="96" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(129,140,248,0.4)" />
+              <rect x="74" y="50" width="84" height="8" rx="4" fill="rgba(165,180,252,0.7)" />
+              <rect x="74" y="68" width="112" height="6" rx="3" fill="rgba(255,255,255,0.28)" />
+              <rect x="74" y="82" width="96" height="6" rx="3" fill="rgba(255,255,255,0.22)" />
+              <rect x="74" y="102" width="58" height="12" rx="6" fill="rgba(99,102,241,0.7)" />
+              <rect x="216" y="32" width="86" height="96" rx="12" fill="rgba(99,102,241,0.16)" stroke="rgba(167,139,250,0.4)" />
+              <circle cx="259" cy="68" r="18" stroke="rgba(165,180,252,0.85)" strokeWidth="3" />
+              <rect x="236" y="100" width="46" height="7" rx="3.5" fill="rgba(196,181,253,0.65)" />
             </svg>
           );
 
         case 'chemical':
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <circle cx="122" cy="82" r="22" fill="rgba(16,185,129,0.2)" stroke="rgba(52,211,153,0.7)" strokeWidth="2" />
-              <circle cx="188" cy="56" r="16" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.7)" strokeWidth="2" />
-              <circle cx="238" cy="96" r="24" fill="rgba(59,130,246,0.2)" stroke="rgba(96,165,250,0.7)" strokeWidth="2" />
-              <line x1="141" y1="74" x2="173" y2="62" stroke="rgba(255,255,255,0.45)" strokeWidth="2" />
-              <line x1="201" y1="66" x2="220" y2="81" stroke="rgba(255,255,255,0.45)" strokeWidth="2" />
+              <circle cx="122" cy="82" r="22" fill="rgba(16,185,129,0.22)" stroke="rgba(52,211,153,0.75)" strokeWidth="2" />
+              <circle cx="188" cy="56" r="16" fill="rgba(34,211,238,0.22)" stroke="rgba(34,211,238,0.75)" strokeWidth="2" />
+              <circle cx="238" cy="96" r="24" fill="rgba(59,130,246,0.22)" stroke="rgba(96,165,250,0.75)" strokeWidth="2" />
+              <line x1="141" y1="74" x2="173" y2="62" stroke="rgba(255,255,255,0.48)" strokeWidth="2" />
+              <line x1="201" y1="66" x2="220" y2="81" stroke="rgba(255,255,255,0.48)" strokeWidth="2" />
               <circle cx="122" cy="82" r="5" fill="#34d399" />
               <circle cx="188" cy="56" r="4" fill="#22d3ee" />
               <circle cx="238" cy="96" r="5" fill="#60a5fa" />
@@ -184,13 +184,13 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
         case 'elmekawy-quotes':
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <rect x="74" y="26" width="212" height="108" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(251,113,133,0.38)" />
-              <rect x="92" y="42" width="176" height="22" rx="7" fill="rgba(244,63,94,0.22)" stroke="rgba(251,113,133,0.4)" />
-              <rect x="92" y="76" width="52" height="18" rx="5" fill="rgba(255,255,255,0.12)" />
-              <rect x="154" y="76" width="52" height="18" rx="5" fill="rgba(255,255,255,0.12)" />
-              <rect x="216" y="76" width="52" height="42" rx="6" fill="rgba(244,63,94,0.55)" />
-              <rect x="92" y="100" width="52" height="18" rx="5" fill="rgba(255,255,255,0.12)" />
-              <rect x="154" y="100" width="52" height="18" rx="5" fill="rgba(255,255,255,0.12)" />
+              <rect x="74" y="26" width="212" height="108" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(251,113,133,0.42)" />
+              <rect x="92" y="42" width="176" height="22" rx="7" fill="rgba(244,63,94,0.24)" stroke="rgba(251,113,133,0.45)" />
+              <rect x="92" y="76" width="52" height="18" rx="5" fill="rgba(255,255,255,0.14)" />
+              <rect x="154" y="76" width="52" height="18" rx="5" fill="rgba(255,255,255,0.14)" />
+              <rect x="216" y="76" width="52" height="42" rx="6" fill="rgba(244,63,94,0.6)" />
+              <rect x="92" y="100" width="52" height="18" rx="5" fill="rgba(255,255,255,0.14)" />
+              <rect x="154" y="100" width="52" height="18" rx="5" fill="rgba(255,255,255,0.14)" />
             </svg>
           );
 
@@ -199,11 +199,11 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
               {[62, 146, 230].map((x, i) => (
                 <g key={i}>
-                  <rect x={x} y="30" width="68" height="100" rx="11" fill="rgba(255,255,255,0.07)" stroke="rgba(251,146,60,0.38)" />
-                  <rect x={x + 8} y="38" width="52" height="42" rx="7" fill="rgba(249,115,22,0.22)" />
-                  <rect x={x + 8} y="88" width="40" height="6" rx="3" fill="rgba(255,255,255,0.45)" />
-                  <rect x={x + 8} y="100" width="28" height="6" rx="3" fill="rgba(52,211,153,0.75)" />
-                  <rect x={x + 8} y="112" width="52" height="10" rx="5" fill="rgba(249,115,22,0.65)" />
+                  <rect x={x} y="30" width="68" height="100" rx="11" fill="rgba(255,255,255,0.08)" stroke="rgba(251,146,60,0.42)" />
+                  <rect x={x + 8} y="38" width="52" height="42" rx="7" fill="rgba(249,115,22,0.24)" />
+                  <rect x={x + 8} y="88" width="40" height="6" rx="3" fill="rgba(255,255,255,0.48)" />
+                  <rect x={x + 8} y="100" width="28" height="6" rx="3" fill="rgba(52,211,153,0.8)" />
+                  <rect x={x + 8} y="112" width="52" height="10" rx="5" fill="rgba(249,115,22,0.7)" />
                 </g>
               ))}
             </svg>
@@ -212,13 +212,13 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
         default:
           return (
             <svg className="w-full h-full" viewBox="0 0 360 160" fill="none" aria-hidden="true">
-              <rect x="64" y="28" width="232" height="104" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(56,189,248,0.35)" />
-              <line x1="180" y1="28" x2="180" y2="132" stroke="rgba(56,189,248,0.32)" strokeWidth="2" />
-              <line x1="64" y1="80" x2="296" y2="80" stroke="rgba(56,189,248,0.24)" strokeWidth="1.5" />
-              <rect x="78" y="40" width="88" height="28" rx="6" fill="rgba(59,130,246,0.22)" />
-              <rect x="194" y="40" width="88" height="28" rx="6" fill="rgba(6,182,212,0.22)" />
-              <rect x="78" y="92" width="88" height="28" rx="6" fill="rgba(6,182,212,0.18)" />
-              <rect x="194" y="92" width="88" height="28" rx="6" fill="rgba(124,58,237,0.22)" />
+              <rect x="64" y="28" width="232" height="104" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(56,189,248,0.4)" />
+              <line x1="180" y1="28" x2="180" y2="132" stroke="rgba(56,189,248,0.36)" strokeWidth="2" />
+              <line x1="64" y1="80" x2="296" y2="80" stroke="rgba(56,189,248,0.28)" strokeWidth="1.5" />
+              <rect x="78" y="40" width="88" height="28" rx="6" fill="rgba(59,130,246,0.24)" />
+              <rect x="194" y="40" width="88" height="28" rx="6" fill="rgba(6,182,212,0.24)" />
+              <rect x="78" y="92" width="88" height="28" rx="6" fill="rgba(6,182,212,0.2)" />
+              <rect x="194" y="92" width="88" height="28" rx="6" fill="rgba(124,58,237,0.24)" />
             </svg>
           );
       }
@@ -226,28 +226,39 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
 
     return (
       <div
-        className={`relative w-full ${heightClass} overflow-hidden select-none shrink-0`}
+        className={`relative w-full ${heightClass} overflow-hidden select-none shrink-0 preserve-3d`}
         style={{
-          background: `linear-gradient(135deg, #0b132b 0%, ${project.color.accentHex}3b 55%, ${project.color.secondaryHex}36 100%)`,
+          background: `linear-gradient(135deg, #070d20 0%, ${project.color.accentHex}46 54%, ${project.color.secondaryHex}3d 100%)`,
         }}
       >
-        {/* Lightweight Browser Top Bar (Zero Blur Filter Cost on Mobile) */}
+        {/* Perspective Wire Grid Depth Layer */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-35 pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        {/* Sleek Studio Browser Header Bar */}
         <div
           dir="ltr"
-          className="relative z-20 flex items-center justify-between px-3 py-2 bg-slate-950/75 border-b border-white/10"
+          className="relative z-20 flex items-center justify-between px-3 py-2 bg-[#040814]/82 border-b border-white/10"
         >
           <div className="flex items-center gap-1.5 shrink-0">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-400/85" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/85" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/85" />
           </div>
-          <span className="font-latin text-[11px] font-medium text-slate-300/90 truncate max-w-[160px] xs:max-w-[210px] sm:max-w-[260px]">
+          <span className="font-latin text-[11px] font-medium text-slate-300 truncate max-w-[160px] xs:max-w-[210px] sm:max-w-[260px]">
             {hostname}
           </span>
           <span className="w-4 shrink-0" />
         </div>
 
-        {/* Main Preview Stage */}
+        {/* Main 3D Stage */}
         {project.imageUrl && !imgFailed ? (
           <div className="relative w-full h-[calc(100%-33px)] bg-slate-900">
             {!imgLoaded && (
@@ -260,6 +271,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
               height={360}
               loading="lazy"
               decoding="async"
+              referrerPolicy="no-referrer"
               onLoad={() => setImgLoaded(true)}
               onError={() => setImgFailed(true)}
               className={`w-full h-full object-cover object-center transition-all duration-300 [@media(hover:hover)]:group-hover:scale-105 ${
@@ -268,22 +280,38 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
             />
           </div>
         ) : (
-          <div className="relative w-full h-[calc(100%-33px)] flex items-center justify-center">
-            <div className="absolute inset-0 opacity-90 transition-transform duration-500 [@media(hover:hover)]:group-hover:scale-105">
+          <div className="relative w-full h-[calc(100%-33px)] flex items-center justify-center preserve-3d">
+            <div className="absolute inset-0 opacity-95 transition-transform duration-500 [@media(hover:hover)]:group-hover:scale-105">
               {renderCustomScene()}
             </div>
 
+            {/* Volumetric Center Aura Behind Floating Emblem */}
             <div
-              className="relative z-10 w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-white shadow-xl border border-white/25 transition-transform duration-300 [@media(hover:hover)]:group-hover:scale-110"
+              aria-hidden="true"
+              className="absolute w-28 h-28 rounded-full opacity-75 pointer-events-none"
+              style={{
+                background: `radial-gradient(circle, ${project.color.glow} 0%, transparent 70%)`,
+              }}
+            />
+
+            {/* Floating 3D Elevated Project Icon Badge */}
+            <div
+              className="relative z-10 w-14 h-14 sm:w-15 sm:h-15 rounded-2xl flex items-center justify-center text-white shadow-2xl border border-white/30 transition-transform duration-300 [@media(hover:hover)]:group-hover:scale-110 depth-layer-2"
               style={{
                 background: `linear-gradient(135deg, ${project.color.accentHex}, ${project.color.secondaryHex})`,
-                boxShadow: `0 12px 26px -6px ${project.color.glow}`,
+                boxShadow: `0 16px 32px -6px ${project.color.glow}`,
               }}
             >
               {renderProjectIcon(project.icon, 'w-6 h-6 sm:w-7 sm:h-7')}
             </div>
           </div>
         )}
+
+        {/* Bottom Scrim Gradient Blending Into Card Surface */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/35 to-transparent z-10"
+        />
       </div>
     );
   }

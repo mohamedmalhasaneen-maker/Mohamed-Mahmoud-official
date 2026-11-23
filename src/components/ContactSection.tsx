@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 import { ProfileInfo } from '../types';
 import { copyToClipboard } from '../utils/clipboard';
-import { SpotlightCard } from './SpotlightCard';
+import { Card3DTilt } from './Card3DTilt';
+import { MagneticWrapper } from './MagneticWrapper';
 
 interface ContactSectionProps {
   profile: ProfileInfo;
@@ -90,33 +91,35 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative py-12 sm:py-20 lg:py-24 overflow-hidden"
+      className="relative py-12 sm:py-20 lg:py-24 overflow-x-clip"
     >
-      {/* Pre-softened Radial Glow (Zero CSS Blur Filter Cost on Mobile) */}
+      {/* Volumetric Center Aura */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34rem] h-[22rem] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[24rem] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, rgba(124,58,237,0.08) 45%, transparent 72%)',
+            'radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, rgba(124,58,237,0.10) 45%, transparent 72%)',
         }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <m.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
-          <span className="text-xs sm:text-sm font-bold tracking-wide text-blue-600 dark:text-cyan-400">
-            تواصل مباشر وسريع
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wide text-blue-700 dark:text-cyan-400">
+            <span aria-hidden="true" className="w-5 h-[2px] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+            <span>تواصل مباشر وسريع</span>
+            <span aria-hidden="true" className="w-5 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-violet-500" />
+          </div>
           <h2
             id="contact-heading"
-            className="mt-2 text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug"
+            className="mt-2.5 text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug [text-wrap:balance]"
           >
             لنبدأ بتحويل فكرتك القادمة إلى مشروع رقمي مميز
           </h2>
@@ -125,16 +128,16 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
           </p>
         </m.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start">
-          {/* Right Column: Separate Contact Channel Cards + Social Profiles */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start perspective-stage">
+          {/* Right Column: 3D Tilt Contact Cards + Official Social Media */}
           <div className="lg:col-span-6 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* WhatsApp Card */}
               <m.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.42 }}
               >
                 <a
                   id="contact-whatsapp-btn"
@@ -143,35 +146,38 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                   rel="noopener noreferrer"
                   className="block h-full group"
                 >
-                  <SpotlightCard
-                    spotlightColor="rgba(16, 185, 129, 0.24)"
-                    className="touch-card-interactive h-full p-5 hover:border-emerald-500/50"
+                  <Card3DTilt
+                    maxTiltDeg={6}
+                    spotlightColor="rgba(16, 185, 129, 0.25)"
+                    className="h-full p-5 hover:border-emerald-500/55"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
-                        <MessageCircle className="w-5 h-5" />
+                    <div className="preserve-3d">
+                      <div className="flex items-start justify-between depth-layer-1">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md">
+                          <MessageCircle className="w-5 h-5" />
+                        </div>
+                        <ArrowUpLeft className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />
                       </div>
-                      <ArrowUpLeft className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />
+                      <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
+                        واتساب مباشر
+                      </h3>
+                      <p className="mt-1 font-latin text-sm font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">
+                        {phone}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                        تحدث معي مباشرة لمناقشة مشروعك
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
-                      واتساب مباشر
-                    </h3>
-                    <p className="mt-1 font-latin text-sm font-bold text-emerald-600 dark:text-emerald-400">
-                      {phone}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      تحدث معي مباشرة لمناقشة مشروعك
-                    </p>
-                  </SpotlightCard>
+                  </Card3DTilt>
                 </a>
               </m.div>
 
               {/* Telegram Card */}
               <m.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.4, delay: 0.05 }}
+                transition={{ duration: 0.42, delay: 0.05 }}
               >
                 <a
                   href={telegramUrl}
@@ -179,133 +185,142 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                   rel="noopener noreferrer"
                   className="block h-full group"
                 >
-                  <SpotlightCard
-                    spotlightColor="rgba(14, 165, 233, 0.24)"
-                    className="touch-card-interactive h-full p-5 hover:border-sky-500/50"
+                  <Card3DTilt
+                    maxTiltDeg={6}
+                    spotlightColor="rgba(14, 165, 233, 0.25)"
+                    className="h-full p-5 hover:border-sky-500/55"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white shadow-md">
-                        <Send className="w-5 h-5" />
+                    <div className="preserve-3d">
+                      <div className="flex items-start justify-between depth-layer-1">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white shadow-md">
+                          <Send className="w-5 h-5" />
+                        </div>
+                        <ArrowUpLeft className="w-4 h-4 text-slate-400 group-hover:text-sky-500 transition-colors" />
                       </div>
-                      <ArrowUpLeft className="w-4 h-4 text-slate-400 group-hover:text-sky-500 transition-colors" />
+                      <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
+                        تيليجرام
+                      </h3>
+                      <p className="mt-1 font-latin text-sm font-bold text-sky-600 dark:text-sky-400 tabular-nums">
+                        {phone}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                        مراسلة سريعة ومشاركة ملفات المشروع
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
-                      تيليجرام
-                    </h3>
-                    <p className="mt-1 font-latin text-sm font-bold text-sky-600 dark:text-sky-400">
-                      {phone}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      مراسلة سريعة ومشاركة ملفات المشروع
-                    </p>
-                  </SpotlightCard>
+                  </Card3DTilt>
                 </a>
               </m.div>
 
               {/* Direct Phone Call Card */}
               <m.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                transition={{ duration: 0.42, delay: 0.1 }}
               >
                 <a href={`tel:${phone}`} className="block h-full group">
-                  <SpotlightCard
-                    spotlightColor="rgba(124, 58, 237, 0.24)"
-                    className="touch-card-interactive h-full p-5 hover:border-violet-500/50"
+                  <Card3DTilt
+                    maxTiltDeg={6}
+                    spotlightColor="rgba(124, 58, 237, 0.25)"
+                    className="h-full p-5 hover:border-violet-500/55"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center text-white shadow-md">
-                        <Phone className="w-5 h-5" />
+                    <div className="preserve-3d">
+                      <div className="flex items-start justify-between depth-layer-1">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center text-white shadow-md">
+                          <Phone className="w-5 h-5" />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(e) => handleCopy('phone', phone, e)}
+                          title="نسخ رقم الهاتف"
+                          aria-label="نسخ رقم الهاتف"
+                          className="w-11 h-11 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 active:scale-95 dark:hover:bg-white/[0.14] text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
+                        >
+                          {copiedKey === 'phone' ? (
+                            <Check className="w-4 h-4 text-emerald-500" />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
                       </div>
-                      <button
-                        type="button"
-                        onClick={(e) => handleCopy('phone', phone, e)}
-                        title="نسخ رقم الهاتف"
-                        aria-label="نسخ رقم الهاتف"
-                        className="w-11 h-11 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 active:scale-95 dark:hover:bg-white/[0.14] text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
-                      >
-                        {copiedKey === 'phone' ? (
-                          <Check className="w-4 h-4 text-emerald-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </button>
+                      <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
+                        اتصال هاتفي مباشر
+                      </h3>
+                      <p className="mt-1 font-latin text-sm font-bold text-violet-600 dark:text-violet-400 tabular-nums">
+                        {phone}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                        {copiedKey === 'phone' ? 'تم نسخ الرقم بنجاح!' : 'اضغط للاتصال المباشر أو نسخ الرقم'}
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
-                      اتصال هاتفي مباشر
-                    </h3>
-                    <p className="mt-1 font-latin text-sm font-bold text-violet-600 dark:text-violet-400">
-                      {phone}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      {copiedKey === 'phone' ? 'تم نسخ الرقم بنجاح!' : 'اضغط للاتصال المباشر أو نسخ الرقم'}
-                    </p>
-                  </SpotlightCard>
+                  </Card3DTilt>
                 </a>
               </m.div>
 
               {/* Email Card */}
               <m.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.4, delay: 0.15 }}
+                transition={{ duration: 0.42, delay: 0.15 }}
               >
                 <a href={`mailto:${email}`} className="block h-full group">
-                  <SpotlightCard
-                    spotlightColor="rgba(6, 182, 212, 0.24)"
-                    className="touch-card-interactive h-full p-5 hover:border-cyan-500/50"
+                  <Card3DTilt
+                    maxTiltDeg={6}
+                    spotlightColor="rgba(6, 182, 212, 0.25)"
+                    className="h-full p-5 hover:border-cyan-500/55"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md">
-                        <Mail className="w-5 h-5" />
+                    <div className="preserve-3d">
+                      <div className="flex items-start justify-between depth-layer-1">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md">
+                          <Mail className="w-5 h-5" />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(e) => handleCopy('email', email, e)}
+                          title="نسخ البريد الإلكتروني"
+                          aria-label="نسخ البريد الإلكتروني"
+                          className="w-11 h-11 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 active:scale-95 dark:hover:bg-white/[0.14] text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
+                        >
+                          {copiedKey === 'email' ? (
+                            <Check className="w-4 h-4 text-emerald-500" />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
                       </div>
-                      <button
-                        type="button"
-                        onClick={(e) => handleCopy('email', email, e)}
-                        title="نسخ البريد الإلكتروني"
-                        aria-label="نسخ البريد الإلكتروني"
-                        className="w-11 h-11 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 active:scale-95 dark:hover:bg-white/[0.14] text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
+                      <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
+                        البريد الإلكتروني
+                      </h3>
+                      <p
+                        dir="ltr"
+                        className="mt-1 font-latin text-xs font-bold text-cyan-700 dark:text-cyan-300 break-all text-right"
                       >
-                        {copiedKey === 'email' ? (
-                          <Check className="w-4 h-4 text-emerald-500" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </button>
+                        {email}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                        {copiedKey === 'email' ? 'تم نسخ البريد بنجاح!' : 'للمراسلات الرسمية وعروض الأعمال'}
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-extrabold text-slate-900 dark:text-white">
-                      البريد الإلكتروني
-                    </h3>
-                    <p
-                      dir="ltr"
-                      className="mt-1 font-latin text-xs font-bold text-cyan-700 dark:text-cyan-300 break-all text-right"
-                    >
-                      {email}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      {copiedKey === 'email' ? 'تم نسخ البريد بنجاح!' : 'للمراسلات الرسمية وعروض الأعمال'}
-                    </p>
-                  </SpotlightCard>
+                  </Card3DTilt>
                 </a>
               </m.div>
             </div>
 
             {/* Social Media Accounts Card */}
             <m.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={{ duration: 0.42, delay: 0.2 }}
             >
-              <SpotlightCard className="p-5 sm:p-6">
+              <Card3DTilt maxTiltDeg={4} scaleOnHover={1.01} className="p-5 sm:p-6">
                 <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white mb-3.5">
                   الحسابات الرسمية على منصات التواصل الاجتماعي
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
-                  {/* Facebook Official Colorful App Icon */}
+                  {/* Facebook */}
                   <a
                     href={
                       profile.facebookUrl ||
@@ -323,7 +338,7 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     <span>فيسبوك</span>
                   </a>
 
-                  {/* Instagram Official Multi-Color Gradient App Icon */}
+                  {/* Instagram */}
                   <a
                     href={
                       profile.instagramUrl || 'https://www.instagram.com/eng_mohamed662010/'
@@ -355,7 +370,7 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     <span>انستجرام</span>
                   </a>
 
-                  {/* TikTok Official Dual-Neon App Icon */}
+                  {/* TikTok */}
                   <a
                     href={profile.tiktokUrl || 'https://www.tiktok.com/@eng_mahamed6'}
                     target="_blank"
@@ -383,19 +398,24 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     <span>تيك توك</span>
                   </a>
                 </div>
-              </SpotlightCard>
+              </Card3DTilt>
             </m.div>
           </div>
 
-          {/* Left Column: Direct WhatsApp / Email Project Inquiry Form (16px Mobile Font Prevents Auto-Zoom) */}
+          {/* Left Column: Interactive 3D Inquiry Composer */}
           <m.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: 0.08 }}
+            transition={{ duration: 0.48, delay: 0.08 }}
             className="lg:col-span-6"
           >
-            <SpotlightCard className="p-5 sm:p-8 border-blue-500/20 dark:border-cyan-400/20">
+            <Card3DTilt
+              maxTiltDeg={4.5}
+              scaleOnHover={1.01}
+              spotlightColor="rgba(59, 130, 246, 0.2)"
+              className="p-5 sm:p-8 border-blue-500/25 dark:border-cyan-400/25"
+            >
               <div className="flex items-center gap-2.5 mb-2">
                 <div className="w-9 h-9 rounded-xl bg-studio-gradient flex items-center justify-center text-white shadow-sm shrink-0">
                   <Sparkles className="w-4 h-4" />
@@ -423,7 +443,7 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     value={senderName}
                     onChange={(e) => setSenderName(e.target.value)}
                     placeholder="مثال: أحمد / شركة النور"
-                    className="w-full min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/65 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
+                    className="w-full min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/75 border border-slate-200 dark:border-white/12 text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
                   />
                 </div>
 
@@ -438,7 +458,7 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     id="inquiry-type"
                     value={projectType}
                     onChange={(e) => setProjectType(e.target.value)}
-                    className="w-full min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/65 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
+                    className="w-full min-h-[48px] px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/75 border border-slate-200 dark:border-white/12 text-slate-900 dark:text-white text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors"
                   >
                     {PROJECT_TYPES.map((type) => (
                       <option key={type} value={type} className="bg-white dark:bg-slate-900">
@@ -461,31 +481,35 @@ export const ContactSection: React.FC<ContactSectionProps> = React.memo(({ profi
                     value={projectDetails}
                     onChange={(e) => setProjectDetails(e.target.value)}
                     placeholder="اكتب نبذة مختصرة عن المشروع أو المميزات التي ترغب بها..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950/65 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950/75 border border-slate-200 dark:border-white/12 text-slate-900 dark:text-white placeholder:text-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors resize-none"
                   />
                 </div>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                  <a
-                    href={composedWhatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-h-[48px] px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:brightness-110 active:scale-[0.98] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-[0_10px_25px_-6px_rgba(16,185,129,0.45)] transition-all"
-                  >
-                    <MessageCircle className="w-4 h-4 shrink-0" />
-                    <span>إرسال عبر واتساب الآن</span>
-                  </a>
+                  <MagneticWrapper strength={0.18} className="flex-1">
+                    <a
+                      href={composedWhatsappHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full min-h-[48px] px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:brightness-110 active:scale-[0.98] text-white font-bold text-sm flex items-center justify-center gap-2 whitespace-nowrap shadow-[0_12px_28px_-6px_rgba(16,185,129,0.48)] transition-all"
+                    >
+                      <MessageCircle className="w-4 h-4 shrink-0" />
+                      <span>إرسال عبر واتساب الآن</span>
+                    </a>
+                  </MagneticWrapper>
 
-                  <a
-                    href={composedEmailHref}
-                    className="min-h-[48px] px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 active:scale-[0.98] dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-200/85 dark:border-white/10 text-slate-800 dark:text-slate-100 font-bold text-sm flex items-center justify-center gap-2 transition-all"
-                  >
-                    <Mail className="w-4 h-4 text-blue-600 dark:text-cyan-400 shrink-0" />
-                    <span>إرسال عبر البريد</span>
-                  </a>
+                  <MagneticWrapper strength={0.16} className="sm:w-auto">
+                    <a
+                      href={composedEmailHref}
+                      className="w-full min-h-[48px] px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 active:scale-[0.98] dark:bg-white/[0.07] dark:hover:bg-white/[0.14] border border-slate-200/85 dark:border-white/12 text-slate-800 dark:text-slate-100 font-bold text-sm flex items-center justify-center gap-2 whitespace-nowrap transition-all"
+                    >
+                      <Mail className="w-4 h-4 text-blue-600 dark:text-cyan-400 shrink-0" />
+                      <span>إرسال عبر البريد</span>
+                    </a>
+                  </MagneticWrapper>
                 </div>
               </form>
-            </SpotlightCard>
+            </Card3DTilt>
           </m.div>
         </div>
       </div>
