@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Sun, Moon, Home, FolderGit2, MessageSquare, Menu, X, LayoutGrid } from 'lucide-react';
 import { ThemeMode } from '../types';
 import { scrollToElementById } from '../utils/scroll';
-import { PWAInstallButton } from './PWAInstallButton';
 
 export type SectionId = 'home' | 'projects' | 'contact';
 
@@ -128,11 +127,8 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
               </span>
             </a>
 
-            {/* Independent Utility Buttons (Theme Toggle, PWA Install & Sections Menu Button) */}
+            {/* Independent Utility Buttons (Theme Toggle & Sections Menu Button) */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-              <div className="hidden sm:block">
-                <PWAInstallButton variant="navbar" />
-              </div>
 
               <button
                 type="button"

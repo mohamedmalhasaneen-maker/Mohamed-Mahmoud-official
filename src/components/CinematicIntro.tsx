@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { m, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 interface CinematicIntroProps {
   visible: boolean;
@@ -11,7 +11,6 @@ const LINE_TWO = 'STUDIO';
 
 export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
   ({ visible, onComplete }) => {
-    const prefersReducedMotion = useReducedMotion();
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const [progress, setProgress] = useState(0);
     const [exiting, setExiting] = useState(false);
@@ -53,15 +52,9 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
       }
     }, [visible]);
 
+    // Guaranteed ~3.1s timeline progress & keyboard / touch skip on all devices (Mobile & Desktop)
     useEffect(() => {
-      if (visible && prefersReducedMotion) {
-        onComplete();
-      }
-    }, [visible, prefersReducedMotion, onComplete]);
-
-    // Snappy ~3.1s timeline progress & keyboard / click skip
-    useEffect(() => {
-      if (!visible || prefersReducedMotion) return;
+      if (!visible) return;
 
       const durationMs = 3100;
       const startTime = performance.now();
@@ -92,18 +85,18 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
         window.cancelAnimationFrame(rafId);
         window.removeEventListener('keydown', handleKeyDown);
       };
-    }, [visible, prefersReducedMotion, triggerExit]);
+    }, [visible, triggerExit]);
 
-    // Lightweight luminous background particles on canvas
+    // Lightweight luminous background particles on canvas (fully optimized for mobile & desktop)
     useEffect(() => {
-      if (!visible || prefersReducedMotion) return;
+      if (!visible) return;
       const canvas = canvasRef.current;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
       let animId = 0;
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
       const resize = () => {
         canvas.width = Math.floor(window.innerWidth * dpr);
@@ -112,14 +105,14 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
       resize();
       window.addEventListener('resize', resize, { passive: true });
 
-      const count = window.innerWidth < 640 ? 28 : 54;
+      const count = window.innerWidth < 640 ? 24 : 48;
       const particles = Array.from({ length: count }, () => ({
         x: Math.random(),
         y: Math.random(),
-        vx: (Math.random() - 0.5) * 0.00045,
-        vy: -0.00025 - Math.random() * 0.00055,
-        r: 1 + Math.random() * 2.1,
-        alpha: 0.25 + Math.random() * 0.55,
+        vx: (Math.random() - 0.5) * 0.0004,
+        vy: -0.0002 - Math.random() * 0.0005,
+        r: 1 + Math.random() * 2,
+        alpha: 0.3 + Math.random() * 0.5,
         hue: Math.random() > 0.5 ? '56, 189, 248' : Math.random() > 0.4 ? '139, 92, 246' : '59, 130, 246',
       }));
 
@@ -150,7 +143,7 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
         window.cancelAnimationFrame(animId);
         window.removeEventListener('resize', resize);
       };
-    }, [visible, prefersReducedMotion]);
+    }, [visible]);
 
     return (
       <AnimatePresence>
@@ -172,7 +165,8 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
             }
             exit={{ opacity: 0, scale: 1.12 }}
             transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#040814] text-white select-none"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#040814] text-white select-none touch-none"
+            onClick={triggerExit}
           >
             {/* Deep Radial Midnight Spotlight Aura */}
             <div
@@ -191,26 +185,24 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
               className="absolute inset-0 w-full h-full pointer-events-none"
             />
 
-
-
             {/* Center 3D Sculpted Stage */}
-            <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center max-w-4xl mx-auto">
+            <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 text-center max-w-4xl mx-auto">
               {/* Central 3D Orbital Studio Emblem */}
               <m.div
                 initial={{ opacity: 0, scale: 0.55 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.72, ease: [0.16, 1, 0.3, 1] }}
-                className="relative mb-8 sm:mb-10 flex items-center justify-center"
+                className="relative mb-6 sm:mb-10 flex items-center justify-center"
               >
                 <div
                   aria-hidden="true"
-                  className="absolute w-44 h-44 sm:w-56 sm:h-56 rounded-full pointer-events-none"
+                  className="absolute w-36 h-36 sm:w-56 sm:h-56 rounded-full pointer-events-none"
                   style={{
                     background:
                       'radial-gradient(circle, rgba(56, 189, 248, 0.36) 0%, rgba(124, 58, 237, 0.24) 45%, transparent 72%)',
                   }}
                 />
-                <div className="relative w-22 h-22 sm:w-26 sm:h-26 rounded-full p-[3px] bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-600 shadow-[0_0_48px_rgba(37,99,235,0.65)]">
+                <div className="relative w-20 h-20 sm:w-26 sm:h-26 rounded-full p-[3px] bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-600 shadow-[0_0_48px_rgba(37,99,235,0.65)]">
                   <div className="w-full h-full rounded-full overflow-hidden bg-[#040814] ring-1 ring-white/25">
                     <img
                       src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_1.08.01_AM_48e19d64.jpeg"
@@ -226,18 +218,18 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
               {/* Studio Wordmark: MOHAMED MAHMOUD STUDIO */}
               <h1
                 dir="ltr"
-                className="font-latin font-extrabold tracking-[0.14em] sm:tracking-[0.22em] text-xl xs:text-2xl sm:text-4xl md:text-5xl text-white uppercase leading-tight drop-shadow-[0_14px_34px_rgba(37,99,235,0.55)]"
+                className="font-latin font-extrabold tracking-[0.1em] xs:tracking-[0.14em] sm:tracking-[0.22em] text-lg xs:text-xl sm:text-4xl md:text-5xl text-white uppercase leading-tight drop-shadow-[0_14px_34px_rgba(37,99,235,0.55)] max-w-full px-2"
               >
-                <span className="block">{LINE_ONE}</span>
-                <span className="block mt-2 text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400">
+                <span className="block truncate">{LINE_ONE}</span>
+                <span className="block mt-1.5 sm:mt-2 text-xl xs:text-2xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400">
                   {LINE_TWO}
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <div className="mt-5 sm:mt-6 flex items-center justify-center gap-3 sm:gap-5 w-full max-w-md">
+              <div className="mt-4 sm:mt-6 flex items-center justify-center gap-2.5 sm:gap-5 w-full max-w-xs sm:max-w-md">
                 <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-l from-cyan-400/60 to-transparent" />
-                <span className="text-xs sm:text-sm font-bold text-cyan-200/90 tracking-wide whitespace-nowrap">
+                <span className="text-[11px] xs:text-xs sm:text-sm font-bold text-cyan-200/90 tracking-wide whitespace-nowrap">
                   مطور مواقع وتطبيقات ويب
                 </span>
                 <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-violet-400/60 to-transparent" />
@@ -245,12 +237,12 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = React.memo(
             </div>
 
             {/* Bottom Cinematic Bar: Tabular Progress & Glass Bar */}
-            <div className="absolute inset-x-0 bottom-0 z-20 px-6 sm:px-12 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 flex items-center justify-center">
-              <div className="flex items-center gap-4 min-w-0 w-full max-w-md bg-white/[0.04] backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 shadow-xl">
-                <span className="font-latin text-xs font-extrabold text-cyan-300 tabular-nums w-10 text-left shrink-0">
+            <div className="absolute inset-x-0 bottom-0 z-20 px-4 sm:px-12 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 flex items-center justify-center">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0 w-full max-w-xs sm:max-w-md bg-white/[0.04] backdrop-blur-md px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl border border-white/10 shadow-xl">
+                <span className="font-latin text-xs font-extrabold text-cyan-300 tabular-nums w-9 text-left shrink-0">
                   {String(progress).padStart(2, '0')}%
                 </span>
-                <div className="h-2.5 flex-1 bg-white/10 rounded-full overflow-hidden p-0.5 ring-1 ring-white/15">
+                <div className="h-2 sm:h-2.5 flex-1 bg-white/10 rounded-full overflow-hidden p-0.5 ring-1 ring-white/15">
                   <div
                     className="h-full bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400 rounded-full transition-[width] duration-75 ease-out shadow-[0_0_14px_rgba(56,189,248,0.65)]"
                     style={{ width: `${progress}%` }}
