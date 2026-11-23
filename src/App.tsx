@@ -1,5 +1,5 @@
 import { useState, useCallback, lazy, Suspense } from 'react';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import {
   PROFILE_DATA,
   PROJECTS,
@@ -9,6 +9,7 @@ import { useTheme } from './hooks/useTheme';
 import { useConnectivityAndSync } from './hooks/useConnectivityAndSync';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { AmbientBackground } from './components/AmbientBackground';
+import { CinematicIntro } from './components/CinematicIntro';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { KineticMarquee } from './components/KineticMarquee';
@@ -17,6 +18,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
+import { PWAInstallButton } from './components/PWAInstallButton';
 import { PWAStatusBanner } from './components/PWAStatusBanner';
 
 // Progressive lazy loading for 3D Three.js stage and interactive modal
@@ -27,6 +29,8 @@ const ProjectModal = lazy(() => import('./components/ProjectModal'));
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
+  const [introVisible, setIntroVisible] = useState(true);
+  const [introKey, setIntroKey] = useState(0);
   const [activeFilter, setActiveFilter] = useState<ProjectFilterGroup>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -45,10 +49,23 @@ export default function App() {
     setSelectedProject(null);
   }, []);
 
+  const handleCompleteIntro = useCallback(() => {
+    setIntroVisible(false);
+  }, []);
+
+  const handleReplayIntro = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    setIntroKey((prev) => prev + 1);
+    setIntroVisible(true);
+  }, []);
+
   return (
     <ErrorBoundary>
       <LazyMotion features={domAnimation}>
         <div className="relative min-h-screen w-full bg-[#f4f7fc] text-slate-900 dark:bg-[#050a18] dark:text-slate-100 overflow-x-clip">
+          {/* Cinematic Opening Loading Screen with Skip Intro */}
+          <CinematicIntro key={introKey} visible={introVisible} onComplete={handleCompleteIntro} />
+
           {/* Instant Base Volumetric Layer + Progressive Lazy Three.js 3D Scene */}
           <AmbientBackground />
           <Suspense fallback={null}>
@@ -63,9 +80,18 @@ export default function App() {
             studioName={profile.studioName}
           />
 
-          {/* Main 3D Portfolio Experience */}
-          <main className="relative z-10">
-            {/* 1. 3D Interactive Hero & Floating Studio Pass Portrait */}
+          {/* Main 3D Portfolio Experience with Portal Reveal */}
+          <m.main
+            initial={false}
+            animate={
+              introVisible
+                ? { opacity: 0.25, scale: 0.975 }
+                : { opacity: 1, scale: 1 }
+            }
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 origin-top"
+          >
+            {/* 1. 3D Interactive Hero & Portrait */}
             <HeroSection
               profile={profile}
               totalProjects={projects.length}
@@ -84,10 +110,10 @@ export default function App() {
 
             {/* 4. Direct Contact & 3D Studio Inquiry */}
             <ContactSection profile={profile} />
-          </main>
+          </m.main>
 
           {/* Architectural Closing Studio Footer */}
-          <Footer profile={profile} />
+          <Footer profile={profile} onReplayIntro={handleReplayIntro} />
 
           {/* Lazy-Loaded Project Details Modal */}
           {selectedProject && (
@@ -103,10 +129,15 @@ export default function App() {
           {/* Floating Back-To-Top Button */}
           <BackToTop />
 
-          {/* Floating Official WhatsApp Button (Fixed Bottom-Left) */}
-          <FloatingWhatsAppButton
-            whatsappUrl={profile.whatsappUrl || 'https://wa.me/201031498281'}
-          />
+          {/* Floating Action Buttons (WhatsApp & Mobile PWA Install) */}
+          <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 flex items-center gap-2.5">
+            <div className="block sm:hidden">
+              <PWAInstallButton variant="floating-mobile" />
+            </div>
+            <FloatingWhatsAppButton
+              whatsappUrl={profile.whatsappUrl || 'https://wa.me/201031498281'}
+            />
+          </div>
 
           {/* PWA Connectivity Indicator & Update Prompt */}
           <PWAStatusBanner
@@ -122,4 +153,3 @@ export default function App() {
     </ErrorBoundary>
   );
 }
-

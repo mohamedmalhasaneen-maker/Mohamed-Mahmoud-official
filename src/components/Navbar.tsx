@@ -130,7 +130,9 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
 
             {/* Independent Utility Buttons (Theme Toggle, PWA Install & Sections Menu Button) */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-              <PWAInstallButton variant="navbar" />
+              <div className="hidden sm:block">
+                <PWAInstallButton variant="navbar" />
+              </div>
 
               <button
                 type="button"

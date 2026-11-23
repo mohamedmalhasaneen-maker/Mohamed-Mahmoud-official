@@ -3,7 +3,7 @@ import { Download, Share, PlusSquare, X, Smartphone } from 'lucide-react';
 import { usePWAInstall } from '../hooks/usePWAInstall';
 
 interface PWAInstallButtonProps {
-  variant?: 'navbar' | 'mobile';
+  variant?: 'navbar' | 'mobile' | 'floating-mobile';
   onActionComplete?: () => void;
 }
 
@@ -31,7 +31,18 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = React.memo(
 
     return (
       <>
-        {variant === 'mobile' ? (
+        {variant === 'floating-mobile' ? (
+          <button
+            type="button"
+            id="pwa-install-floating-mobile"
+            onClick={handleClick}
+            aria-label="تثبيت التطبيق"
+            title="تثبيت التطبيق على الهاتف"
+            className="w-13 h-13 rounded-full bg-gradient-to-br from-blue-600 via-violet-600 to-cyan-500 text-white shadow-[0_10px_28px_-5px_rgba(37,99,235,0.55)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
+          >
+            <Download className="w-6 h-6 shrink-0" />
+          </button>
+        ) : variant === 'mobile' ? (
           <button
             type="button"
             id="pwa-install-mobile-btn"
