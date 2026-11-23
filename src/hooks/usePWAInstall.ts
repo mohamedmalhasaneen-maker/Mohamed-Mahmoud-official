@@ -10,6 +10,7 @@ export function usePWAInstall() {
     useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -24,6 +25,7 @@ export function usePWAInstall() {
       /iphone|ipad|ipod/.test(ua) ||
       (ua.includes('mac') && 'ontouchend' in document);
     setIsIOS(isIOSDevice);
+    setIsAndroid(/android/.test(ua));
 
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
@@ -55,21 +57,24 @@ export function usePWAInstall() {
   }, []);
 
   const install = useCallback(async () => {
-    if (!deferredPrompt) return false;
-    await deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setIsInstalled(true);
-      setDeferredPrompt(null);
-      return true;
+    if (deferredPrompt) {
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setIsInstalled(true);
+        setDeferredPrompt(null);
+        return true;
+      }
     }
     return false;
   }, [deferredPrompt]);
 
   return {
-    isInstallable: Boolean(deferredPrompt),
+    isInstallable: true,
+    hasNativePrompt: Boolean(deferredPrompt),
     isInstalled,
     isIOS,
+    isAndroid,
     install,
   };
 }
