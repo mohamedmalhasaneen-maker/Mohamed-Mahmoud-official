@@ -55,7 +55,7 @@ export const Interactive3DPortrait: React.FC<Interactive3DPortraitProps> = React
                   <div className="w-7 h-7 rounded-full overflow-hidden bg-[#040814] ring-1 ring-cyan-400/55 shrink-0">
                     <img
                       src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_1.08.01_AM_48e19d64.jpeg"
-                      alt={studioName}
+                      alt={`شعار ${studioName} لتطوير التطبيقات والمواقع`}
                       width={28}
                       height={28}
                       className="w-full h-full object-cover rounded-full"
@@ -90,7 +90,7 @@ export const Interactive3DPortrait: React.FC<Interactive3DPortraitProps> = React
                   <img
                     id="developer-photo-img"
                     src={photoSrc}
-                    alt={developerName}
+                    alt={`صورة المطور محمد محمود (${developerName}) - مؤسس ${studioName}`}
                     width={960}
                     height={1280}
                     fetchPriority="high"

@@ -64,7 +64,7 @@ export default defineConfig(() => {
           name: 'Mohamed Mahmoud Studio',
           short_name: 'MM Studio',
           description:
-            'الموقع التعريفي ومعرض المشاريع الشخصية للمطور Mohamed Mahmoud - حلول برمجية ذكية وتطبيقات ويب حديثة',
+            'الموقع الرسمي لمحمد محمود (Mohamed Mahmoud Studio)، مطور ومصمم تطبيقات ومواقع الويب. اكتشف أحدث المشاريع والمنصات التعليمية والتطبيقات الرقمية والحلول البرمجية.',
           lang: 'ar',
           dir: 'rtl',
           theme_color: '#060b18',
@@ -100,7 +100,7 @@ export default defineConfig(() => {
           cleanupOutdatedCaches: true,
           clientsClaim: true,
           navigateFallback: '/index.html',
-          navigateFallbackDenylist: [/^\/api\//],
+          navigateFallbackDenylist: [/^\/api\//, /\/sitemap\.xml$/i, /\/robots\.txt$/i],
           runtimeCaching: [
             {
               urlPattern: /\/projects-snapshot\.json(?:\?.*)?$/i,

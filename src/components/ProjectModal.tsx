@@ -126,6 +126,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   {project.title}
                 </h3>
 
+                <p className="mt-1.5 text-xs font-bold text-blue-600 dark:text-cyan-400">
+                  تصميم وتطوير محمد محمود ·{' '}
+                  <a
+                    href="#projects"
+                    onClick={onClose}
+                    className="underline decoration-blue-400/50 hover:decoration-cyan-400"
+                  >
+                    Mohamed Mahmoud Studio
+                  </a>
+                </p>
+
                 <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                   {project.description}
                 </p>

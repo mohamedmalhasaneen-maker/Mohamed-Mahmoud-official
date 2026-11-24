@@ -1,4 +1,4 @@
-import { useState, useCallback, lazy, Suspense } from 'react';
+import { useState, useCallback, useEffect, lazy, Suspense } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import {
   PROFILE_DATA,
@@ -21,6 +21,11 @@ import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton';
 import { PWAInstallButton } from './components/PWAInstallButton';
 import { PWAStatusBanner } from './components/PWAStatusBanner';
 
+const DEFAULT_PAGE_TITLE =
+  'Mohamed Mahmoud Studio | محمد محمود استوديو - تطوير التطبيقات والمواقع';
+const DEFAULT_PAGE_DESCRIPTION =
+  'Mohamed Mahmoud Studio | محمد محمود استوديو — الموقع الرسمي لأعمال ومشاريع المطور محمد محمود: تطبيقات ومواقع ويب ومنصات تعليمية وحلول برمجية حديثة.';
+
 // Progressive lazy loading for 3D Three.js stage and interactive modal
 const CinematicScene3D = lazy(() =>
   import('./components/CinematicScene3D').then((mod) => ({ default: mod.CinematicScene3D }))
@@ -33,6 +38,26 @@ export default function App() {
   const [introKey, setIntroKey] = useState(0);
   const [activeFilter, setActiveFilter] = useState<ProjectFilterGroup>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+
+    if (selectedProject) {
+      const nextTitle = `${selectedProject.title} | Mohamed Mahmoud Studio | محمد محمود استوديو`;
+      const nextDesc = `${selectedProject.description} — تطوير المطور محمد محمود (Mohamed Mahmoud Studio).`;
+      document.title = nextTitle;
+      if (metaDesc) metaDesc.setAttribute('content', nextDesc);
+      if (ogTitle) ogTitle.setAttribute('content', nextTitle);
+      if (ogDesc) ogDesc.setAttribute('content', nextDesc);
+    } else {
+      document.title = DEFAULT_PAGE_TITLE;
+      if (metaDesc) metaDesc.setAttribute('content', DEFAULT_PAGE_DESCRIPTION);
+      if (ogTitle) ogTitle.setAttribute('content', DEFAULT_PAGE_TITLE);
+      if (ogDesc) ogDesc.setAttribute('content', DEFAULT_PAGE_DESCRIPTION);
+    }
+  }, [selectedProject]);
 
   const {
     indicatorState,

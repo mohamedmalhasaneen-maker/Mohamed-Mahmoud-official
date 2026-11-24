@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://mohamed-mahmoud-official.vercel.app/sitemap.xml

@@ -56,10 +56,10 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = React.memo(
               id="projects-heading"
               className="mt-2.5 text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug [text-wrap:balance]"
             >
-              أبرز الأعمال والمشاريع البرمجية ({projects.length} مشاريع متكاملة)
+              مشاريع محمد محمود وأعماله البرمجية — Mohamed Mahmoud Projects ({projects.length})
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              تصفح مجموعة من المواقع والتطبيقات والأنظمة التفاعلية المنشورة فعلياً — اضغط على أي مشروع لعرض تفاصيله الكاملة أو فتحه مباشرة.
+              تصفح أحدث تطبيقات ومواقع محمد محمود والمنصات التعليمية (Mohamed Mahmoud Applications &amp; Software) من تطوير المبرمج محمد محمود في استوديو محمد محمود — اضغط على أي مشروع لعرض تفاصيله الكاملة أو فتحه مباشرة.
             </p>
           </m.div>
 

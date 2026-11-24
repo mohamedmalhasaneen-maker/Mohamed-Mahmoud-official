@@ -10,7 +10,7 @@ export const PROFILE_DATA: ProfileInfo = {
   studioName: 'Mohamed Mahmoud Studio',
   developerName: 'Mohamed Mahmoud',
   roleTitle: 'المطور / Mohamed Mahmoud',
-  bio: 'مطور تطبيقات ومواقع إلكترونية | تقديم حلول برمجية ذكية وواجهات مستخدم حديثة',
+  bio: 'المطور والمبرمج محمد محمود (Mohamed Mahmoud Developer) — تطوير التطبيقات والمواقع الإلكترونية وتقديم حلول برمجية ذكية',
   typingRoles: [
     'مطور ومصمم مواقع وتطبيقات الويب التفاعلية',
     'بناء المتاجر الإلكترونية والمنصات التعليمية الحديثة',
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     id: 'radwa-drawings',
     title: 'تطبيق رسومات رضوى - Radwa Drawings',
     description:
-      'تطبيق وتجربة فنية إبداعية لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية.',
+      'تطبيق ويب وتجربة فنية إبداعية من تطوير محمد محمود لممارسة فنون الرسم واستعراض اللوحات والأعمال الفنية الرقمية (Radwa Drawings App).',
     url: 'https://radwa-drawings.ai.studio/',
     category: 'رسم وفنون • تطبيق تفاعلي',
     filterGroup: 'educational',
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
     id: 'ms-nada-bio',
     title: 'أطلس الأحياء التفاعلي 3D - Ms. Nada Bio',
     description:
-      'أطلس تشريحي تفاعلي ثلاثي الأبعاد لطلاب الثانوية العامة: استكشاف الهيكل العظمي، الجهاز العضلي، والجهاز العصبي بمجسمات واقعية دقيقة.',
+      'أطلس تشريحي تفاعلي ثلاثي الأبعاد من أعمال محمد محمود البرمجية لطلاب الثانوية العامة: استكشاف الهيكل العظمي، الجهاز العضلي، والجهاز العصبي بمجسمات واقعية دقيقة.',
     url: 'https://ms-nada-bio.vercel.app/',
     category: 'أحياء • أطلس تفاعلي 3D',
     filterGroup: 'educational',
@@ -91,7 +91,7 @@ export const PROJECTS: Project[] = [
     id: 'physics-smart',
     title: 'منصة الفيزياء الذكية - Physics Smart',
     description:
-      'منصة تعليمية تفاعلية متكاملة للفيزياء لطلاب الثانوية العامة المصرية والبكالوريا المصرية والدبلومة الأمريكية — دروس تفصيلية، معمل افتراضي، مدرس ذكي، وحل مسائل.',
+      'منصة تعليمية وموقع تفاعلي متكامل للفيزياء من تطبيقات محمد محمود لطلاب الثانوية العامة المصرية والبكالوريا المصرية والدبلومة الأمريكية — دروس تفصيلية، معمل افتراضي، مدرس ذكي، وحل مسائل.',
     url: 'https://physics-smart.vercel.app/',
     category: 'فيزياء • منصة تعليمية ذكية',
     filterGroup: 'educational',
@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
     id: 'rafeeq',
     title: 'رفيق الثانوية العامة',
     description:
-      'منصة ذكية مدعومة بالذكاء الاصطناعي لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.',
+      'منصة وتطبيق ذكي مدعوم بالذكاء الاصطناعي من تطوير محمد محمود لمساعدة طلاب الثانوية العامة في تنظيم المذاكرة وتسهيل التعلم.',
     url: 'https://rafeeqsmart.ai.studio/',
     category: 'ذكاء اصطناعي • تعليم',
     filterGroup: 'educational',
@@ -143,7 +143,7 @@ export const PROJECTS: Project[] = [
     id: 'chemical',
     title: 'التفاعلات الكيميائية',
     description:
-      'موقع تفاعلي مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.',
+      'موقع وتطبيق تفاعلي من تطوير محمد محمود مخصص لشرح ومحاكاة التفاعلات الكيميائية بطريقة مبسطة وبصرية ممتعة.',
     url: 'https://chemical-reactions.vercel.app/',
     category: 'محاكاة تفاعلية • كيمياء',
     filterGroup: 'educational',
@@ -169,7 +169,7 @@ export const PROJECTS: Project[] = [
     id: 'elmekawy-home',
     title: 'شركة المكاوي هوم - الموقع الرسمي',
     description:
-      'المنصة الرسمية لاستعراض منتجات وخدمات شركة المكاوي هوم والديكورات الحديثة.',
+      'المنصة والموقع الرسمي لاستعراض منتجات وخدمات شركة المكاوي هوم (Al-Mekawy Home) والديكورات الحديثة — ضمن مواقع محمد محمود.',
     url: 'https://almekawy-home-official.vercel.app/',
     category: 'موقع تعريفي • ديكورات',
     filterGroup: 'corporate',
@@ -195,7 +195,7 @@ export const PROJECTS: Project[] = [
     id: 'elmekawy-quotes',
     title: 'المكاوي هوم - عروض الأسعار',
     description:
-      'أداة مخصصة لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم بسرعة وسهولة.',
+      'أداة برمجية وتطبيق ويب مخصص لإنشاء وحساب عروض الأسعار لعملاء شركة المكاوي هوم (Al-Mekawy Home Quote) بسرعة وسهولة — تطوير Mohamed Mahmoud Studio.',
     url: 'https://al-mekawy-home.vercel.app/',
     category: 'أداة مالية • حساب تكاليف',
     filterGroup: 'commerce-tools',
@@ -221,7 +221,7 @@ export const PROJECTS: Project[] = [
     id: 'elmekawy-upvc-photos',
     title: 'المكاوي هوم - معرض صور UPVC',
     description:
-      'معرض صور رقمي وتخزين سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك والبلكونات.',
+      'معرض صور رقمي وموقع سحابي لمنتجات المكاوي هوم من قطاعات UPVC والأبواب والشبابيك والبلكونات — تصميم Mohamed Mahmoud Web Developer.',
     url: 'https://al-mekawy-home-upvc-photo.vercel.app/',
     category: 'معرض صور • منتجات UPVC',
     filterGroup: 'corporate',
@@ -247,7 +247,7 @@ export const PROJECTS: Project[] = [
     id: 'the-best-windows',
     title: 'ذا بيست ويندوز - شبابيك وأبواب UPVC',
     description:
-      'الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر.',
+      'الموقع الرسمي لشركة The Best Windows لقطاعات الشبابيك والأبواب الـ UPVC عالية الجودة في مصر — تنفيذ استوديو محمد محمود.',
     url: 'https://the-best-windows.vercel.app/',
     category: 'موقع تعريفي • أبواب وشبابيك UPVC',
     filterGroup: 'corporate',
@@ -273,7 +273,7 @@ export const PROJECTS: Project[] = [
     id: 'elmahlawy-store',
     title: 'المحلاوي ستور - متجر إلكتروني',
     description:
-      'متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب.',
+      'متجر المحلاوي ستور الإلكتروني لعرض المنتجات ومواصفاتها وأسعارها والطلب المباشر عبر واتساب — تطوير Mohamed Mahmoud Software & Apps.',
     url: 'https://elmahlawy-store.vercel.app/',
     category: 'متجر إلكتروني • تسوق',
     filterGroup: 'commerce-tools',

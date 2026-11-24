@@ -141,7 +141,7 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
               {/* Unboxed Clean Studio Kicker */}
               <div className="flex items-center gap-2.5 text-xs sm:text-sm font-bold text-blue-700 dark:text-cyan-300 mb-3 sm:mb-4">
                 <span aria-hidden="true" className="w-6 h-[2px] rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-                <span>استوديو تطوير الويب والتجارب التفاعلية</span>
+                <span>محمد محمود استوديو · Mohamed Mahmoud Studio</span>
               </div>
 
               {/* Developer Name & Studio Heading */}
@@ -162,7 +162,7 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
                 id="developer-title"
                 className="mt-3.5 text-sm sm:text-lg font-extrabold text-blue-700 dark:text-cyan-300"
               >
-                {profile.roleTitle} · مطور مواقع وتطبيقات ويب
+                {profile.roleTitle} (المطور والمبرمج محمد محمود) · Mohamed Mahmoud Web Developer
               </p>
 
               {/* Fixed-Height Typing Specialty Line */}
@@ -179,25 +179,35 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(
                 </span>
               </div>
 
-              {/* Preserved Original Bio */}
+              {/* Official Arabic & English Studio Overview */}
               <p
                 id="developer-bio"
                 className="mt-2.5 text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed"
               >
-                {profile.bio} — نصمم ونبرمج تجارب ويب عصرية تجمع بين قوة الأداء، جاذبية الهوية البصرية، وسلاسة الاستخدام على الهواتف وأجهزة الكمبيوتر.
+                أهلاً بك في استوديو محمد محمود (Mohamed Mahmoud Studio)، الموقع الرسمي لأعمال محمد محمود البرمجية. يضم هذا المعرض أحدث تطبيقات ومواقع محمد محمود والمنصات التعليمية والحلول الرقمية من تصميم وتطوير المبرمج محمد محمود للتطبيقات والويب.
+              </p>
+              <p
+                lang="en"
+                dir="ltr"
+                className="mt-2 text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed"
+              >
+                Official Mohamed Mahmoud Portfolio by Mohamed Mahmoud Developer — showcasing Mohamed Mahmoud Apps, Mohamed Mahmoud Software, Websites, and Interactive Web Applications.
               </p>
 
               {/* Magnetic 3D CTA Controls (48px+ Touch Targets) */}
               <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
                 <MagneticWrapper strength={0.22} className="w-full sm:w-auto">
-                  <button
-                    type="button"
-                    onClick={() => scrollToElementById('projects')}
+                  <a
+                    href="#projects"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToElementById('projects');
+                    }}
                     className="w-full sm:w-auto min-h-[48px] px-6 sm:px-7 py-3.5 rounded-2xl bg-studio-gradient text-white font-bold text-sm sm:text-base shadow-[0_14px_30px_-8px_rgba(37,99,235,0.55)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 whitespace-nowrap cursor-pointer"
                   >
                     <FolderGit2 className="w-5 h-5 shrink-0" />
                     <span>استكشف المشروعات ({totalProjects})</span>
-                  </button>
+                  </a>
                 </MagneticWrapper>
 
                 <MagneticWrapper strength={0.2} className="w-full sm:w-auto">

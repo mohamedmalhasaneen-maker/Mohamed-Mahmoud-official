@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-[#040814] ring-2 ring-cyan-400/50 group-hover:ring-blue-500 shadow-[0_4px_14px_-4px_rgba(37,99,235,0.5)] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_1.08.01_AM_48e19d64.jpeg"
-                  alt={studioName}
+                  alt={`شعار ${studioName} - استوديو محمد محمود لتطوير التطبيقات والمواقع`}
                   width={36}
                   height={36}
                   decoding="async"
@@ -176,7 +176,7 @@ export const Navbar: React.FC<NavbarProps> = React.memo(
                   <div className="w-8 h-8 rounded-full overflow-hidden bg-[#040814] ring-1 ring-cyan-400/50 flex items-center justify-center">
                     <img
                       src="/assets/aistudio/WhatsApp_Image_2026-11-04_at_1.08.01_AM_48e19d64.jpeg"
-                      alt={studioName}
+                      alt={`شعار ${studioName} - استوديو محمد محمود`}
                       width={32}
                       height={32}
                       className="w-full h-full object-cover rounded-full"

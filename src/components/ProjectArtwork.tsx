@@ -266,7 +266,7 @@ export const ProjectArtwork: React.FC<ProjectArtworkProps> = React.memo(
             )}
             <img
               src={project.imageUrl}
-              alt={project.title}
+              alt={`${project.title} — تطبيق من تطوير محمد محمود (Mohamed Mahmoud Studio)`}
               width={640}
               height={360}
               loading="lazy"
