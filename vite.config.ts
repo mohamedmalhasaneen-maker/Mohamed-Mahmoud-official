@@ -58,7 +58,7 @@ export default defineConfig(() => {
       react(),
       tailwindcss(),
       VitePWA({
-        registerType: 'prompt',
+        registerType: 'autoUpdate',
         manifest: {
           id: '/',
           name: 'Mohamed Mahmoud Studio',
@@ -98,9 +98,18 @@ export default defineConfig(() => {
           globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,webp,svg,woff,woff2}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
           cleanupOutdatedCaches: true,
+          skipWaiting: true,
           clientsClaim: true,
           navigateFallback: '/index.html',
-          navigateFallbackDenylist: [/^\/api\//, /\/sitemap\.xml$/i, /\/robots\.txt$/i],
+          navigateFallbackDenylist: [
+            /^\/api\//,
+            /\/sitemap\.xml(?:\?.*)?$/i,
+            /\/robots\.txt(?:\?.*)?$/i,
+            /\/manifest\.webmanifest(?:\?.*)?$/i,
+            /\/projects-snapshot\.json(?:\?.*)?$/i,
+            /\/standalone\.html(?:\?.*)?$/i,
+            /\/google[^/]*\.html(?:\?.*)?$/i,
+          ],
           runtimeCaching: [
             {
               urlPattern: /\/projects-snapshot\.json(?:\?.*)?$/i,
